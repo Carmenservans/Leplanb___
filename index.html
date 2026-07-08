@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>LeplanB — SS26 · Ericeira</title>
+    <meta name="description" content="For people off script. SS26 Collection — Ericeira, Portugal.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+        --rust:  #A89880;
+        --black: #2A2825;
+        --sand:  #F0ECE5;
+        --white: #FFFFFF;
+        --nav-h: 56px;
+        --vh: 1vh;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'DM Sans', sans-serif;
+        background: var(--white);
+        color: var(--black);
+        overflow-x: hidden;
+    }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .announcement-bar {
+        background: var(--sand);
+        color: rgba(42,40,37,0.5);
+        text-align: center;
+        padding: 10px 16px;
+        font-size: 10px;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        font-weight: 400;
+        position: relative;
+        z-index: 101;
+        border-bottom: 1px solid rgba(42,40,37,0.08);
+    }
+    .announcement-bar strong { color: var(--black); font-weight: 600; }
+
+    /* ── NAV ── */
+    .nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: var(--nav-h);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 clamp(16px, 4vw, 52px);
+        background: transparent;
+        transition: background 0.35s;
+    }
+    .nav.solid {
+        background: var(--white);
+        border-bottom: 1px solid rgba(17,17,17,0.08);
+    }
+    .nav-brand {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        font-size: clamp(14px, 1.8vw, 19px);
+        letter-spacing: 1.5px;
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.35s;
+    }
+    .nav.solid .nav-brand { color: var(--black); }
+    .nav-links {
+        display: flex; gap: clamp(20px, 3vw, 44px); list-style: none;
+    }
+    .nav-links a {
+        font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+        color: rgba(255,255,255,0.55); text-decoration: none;
+        font-weight: 400; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav.solid .nav-links a { color: rgba(17,17,17,0.45); }
+    .nav.solid .nav-links a:hover { color: var(--black); }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .nav-cta {
+        font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+        color: #fff; background: transparent; border: 1px solid rgba(255,255,255,0.5);
+        padding: 9px 18px; cursor: pointer;
+        font-family: 'DM Sans', sans-serif; font-weight: 500;
+        transition: background 0.2s, border-color 0.2s, color 0.2s; white-space: nowrap;
+        min-height: 36px;
+    }
+    .nav-cta:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+    .nav.solid .nav-cta { color: var(--black); border-color: rgba(42,40,37,0.3); }
+    .nav.solid .nav-cta:hover { background: var(--sand); border-color: var(--black); }
+    .nav-ig {
+        color: rgba(255,255,255,0.55); display: flex; align-items: center;
+        transition: color 0.2s; text-decoration: none;
+    }
+    .nav-ig:hover { color: #fff; }
+    .nav.solid .nav-ig { color: rgba(17,17,17,0.4); }
+    .nav.solid .nav-ig:hover { color: var(--black); }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+
+    /* ── HERO ── */
+    .hero {
+        position: relative; width: 100vw;
+        height: 100vh; height: calc(var(--vh) * 100);
+        overflow: hidden;
+        display: flex; align-items: flex-end; justify-content: center;
+        padding-bottom: clamp(48px, 9vh, 96px);
+    }
+    .hero-media {
+        position: absolute; inset: 0; z-index: 0;
+    }
+    .hero-media video {
+        width: 100%; height: 100%; object-fit: cover;
+        filter: contrast(1.04) saturate(0.72) brightness(0.72);
+    }
+    .hero-media::after {
+        content: ''; position: absolute; inset: 0;
+        background: linear-gradient(to bottom,
+            rgba(10,8,6,0.1) 0%, rgba(10,8,6,0) 35%,
+            rgba(10,8,6,0) 50%, rgba(10,8,6,0.9) 100%);
+    }
+    .hero-content {
+        position: relative; z-index: 5; text-align: center;
+        display: flex; flex-direction: column; align-items: center;
+        gap: clamp(14px, 2.5vh, 28px);
+    }
+    .hero-eyebrow {
+        font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+        color: rgba(255,255,255,0.4); font-weight: 400;
+    }
+    .hero-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(64px, 11vw, 140px);
+        line-height: 0.87; color: #fff; letter-spacing: 2px;
+    }
+    .hero-title em {
+        display: block;
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic; font-weight: 300;
+        font-size: 0.77em; letter-spacing: 1.5px;
+        color: rgba(255,255,255,0.8);
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .btn-primary {
+        display: inline-flex; align-items: center; gap: 10px;
+        background: transparent; color: #fff;
+        padding: 15px clamp(32px,4vw,52px);
+        font-size: 9.5px; letter-spacing: 2.5px; text-transform: uppercase;
+        font-weight: 500; font-family: 'DM Sans', sans-serif;
+        border: 1px solid rgba(255,255,255,0.6); cursor: pointer; min-height: 50px;
+        transition: background 0.25s, border-color 0.25s;
+    }
+    .btn-primary:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+    .btn-outline {
+        display: inline-flex; align-items: center; gap: 10px;
+        background: transparent; color: #fff;
+        padding: 15px clamp(28px,3.5vw,44px);
+        font-size: 9.5px; letter-spacing: 2.5px; text-transform: uppercase;
+        font-weight: 400; font-family: 'DM Sans', sans-serif;
+        border: 1px solid rgba(255,255,255,0.4); cursor: pointer; min-height: 50px;
+        transition: border-color 0.25s, background 0.25s;
+    }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+    @media (max-width: 480px) {
+        .hero { padding-bottom: 140px; }
+        .hero-title { font-size: 56px; }
+        .hero-btns { flex-direction: column; align-items: center; }
+    }
+
+    /* ── TICKER ── */
+    .ticker-wrap {
+        background: var(--sand); overflow: hidden;
+        padding: 11px 0; white-space: nowrap;
+        border-top: 1px solid rgba(17,17,17,0.08);
+        border-bottom: 1px solid rgba(17,17,17,0.08);
+    }
+    .ticker { display: inline-block; animation: ticker 30s linear infinite; }
+    .ticker span {
+        font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+        color: rgba(17,17,17,0.45); padding: 0 48px; font-weight: 400;
+    }
+    .ticker span b { color: var(--black); font-weight: 600; }
+    @keyframes ticker {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION HEADER (shared) ── */
+    .section-header {
+        display: flex; justify-content: space-between; align-items: flex-end;
+        margin-bottom: 32px;
+        flex-wrap: wrap; gap: 12px;
+    }
+    .section-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(40px, 5.5vw, 68px);
+        color: var(--black); line-height: 0.88;
+    }
+    .section-title em {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic; font-weight: 300;
+        font-size: 0.72em; color: rgba(17,17,17,0.35);
+        display: block;
+    }
+    .section-title.light { color: var(--black); }
+    .section-title.light em { color: rgba(17,17,17,0.3); }
+
+    /* ── STATUS BADGE ── */
+    .status-badge {
+        display: inline-flex; align-items: center; gap: 7px;
+        font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+        font-weight: 600; padding: 7px 14px;
+        white-space: nowrap;
+    }
+    .status-badge::before {
+        content: ''; width: 6px; height: 6px; border-radius: 50%;
+        display: inline-block;
+    }
+    .badge-available {
+        background: transparent; color: var(--black);
+        border: 1px solid rgba(42,40,37,0.18);
+    }
+    .badge-available::before { background: var(--rust); }
+    .badge-preorder {
+        background: rgba(192,90,40,0.1); color: var(--rust);
+        border: 1px solid rgba(192,90,40,0.25);
+    }
+    .badge-preorder::before { background: var(--rust); animation: pulse 1.8s infinite; }
+    @keyframes pulse {
+        0%,100% { opacity:1; } 50% { opacity:0.35; }
+    }
+
+    /* ── PRODUCT CARDS (shared grid) ── */
+    .cards-grid {
+        display: grid;
+        gap: clamp(12px, 2vw, 20px);
+    }
+    .cards-grid.cols-3 { grid-template-columns: repeat(3,1fr); }
+    .cards-grid.cols-6 { grid-template-columns: repeat(3,1fr); }
+    .cards-grid.cols-2 { grid-template-columns: repeat(2,1fr); max-width: 640px; margin: 0 auto; }
+    @media (max-width: 900px) {
+        .cards-grid.cols-6 { grid-template-columns: repeat(2,1fr); }
+        .cards-grid.cols-3 { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 540px) {
+        .cards-grid.cols-6,
+        .cards-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+    }
+
+    .pcard {
+        display: flex; flex-direction: column;
+        background: var(--white);
+        border: 1px solid rgba(17,17,17,0.07);
+        transition: border-color 0.3s, transform 0.3s;
+    }
+    .pcard:hover { border-color: rgba(17,17,17,0.18); transform: translateY(-2px); }
+    .pcard-img {
+        position: relative; overflow: hidden;
+        aspect-ratio: 3/4;
+        background: var(--sand);
+    }
+    .pcard-img img {
+        width:100%; height:100%; object-fit:cover; display:block;
+        transition: transform 0.7s ease;
+        filter: saturate(0.92);
+    }
+    .pcard:hover .pcard-img img { transform: scale(1.06); filter: saturate(1); }
+
+    /* placeholder when no photo yet */
+    .pcard-img.no-photo {
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 10px;
+    }
+    .pcard-img.no-photo .ph-color {
+        width: 48px; height: 48px; border-radius: 50%;
+        border: 2px solid rgba(17,17,17,0.12);
+    }
+    .pcard-img.no-photo .ph-label {
+        font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+        color: rgba(17,17,17,0.3);
+    }
+
+    .pcard-badge {
+        position: absolute; top: 12px; left: 12px;
+        font-size: 7.5px; letter-spacing: 2.5px; text-transform: uppercase;
+        background: rgba(240,236,229,0.92); color: var(--black); padding: 5px 10px;
+        font-weight: 500; border: 1px solid rgba(42,40,37,0.12);
+    }
+    .pcard-badge.rust { background: var(--rust); color: #fff; border-color: transparent; }
+
+    .pcard-body {
+        padding: 16px 18px 18px;
+        display: flex; flex-direction: column; gap: 10px; flex: 1;
+    }
+    .pcard-cat {
+        font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
+        color: rgba(17,17,17,0.28);
+    }
+    .pcard-name {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(20px, 2.2vw, 28px);
+        color: var(--black); line-height: 0.95;
+    }
+    .pcard-name em {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic; font-weight: 300;
+        font-size: 0.82em; color: rgba(17,17,17,0.4); display: block;
+    }
+
+    /* bikini price row */
+    .pcard-prices {
+        display: flex; flex-direction: column; gap: 6px;
+        border-top: 1px solid rgba(17,17,17,0.06); padding-top: 10px;
+    }
+    .price-row {
+        display: flex; justify-content: space-between; align-items: center;
+        gap: 8px;
+    }
+    .price-label {
+        font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+        color: rgba(17,17,17,0.4);
+    }
+    .price-val {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 18px; font-weight: 300; color: var(--black);
+    }
+    .price-btn {
+        background: transparent; color: var(--black); border: 1px solid rgba(42,40,37,0.25);
+        padding: 8px 14px;
+        font-size: 8px; letter-spacing: 2px; text-transform: uppercase;
+        font-weight: 500; font-family: 'DM Sans', sans-serif;
+        cursor: pointer; min-height: 34px;
+        transition: background 0.2s, border-color 0.2s; white-space: nowrap;
+    }
+    .price-btn:hover { background: var(--sand); border-color: var(--black); }
+
+    /* single price (activewear) */
+    .pcard-price {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 22px; font-weight: 300; color: var(--black);
+    }
+    .pcard-price .save {
+        font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+        color: var(--rust); font-weight: 500; font-family: 'DM Sans', sans-serif;
+        margin-left: 6px;
+    }
+    .pcard-features {
+        font-size: 10.5px; color: rgba(17,17,17,0.38);
+        line-height: 1.65; font-weight: 300;
+    }
+    .pcard-btn {
+        width:100%; padding: 13px;
+        background: transparent; color: var(--black); border: 1px solid rgba(42,40,37,0.22);
+        font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+        font-weight: 500; font-family: 'DM Sans', sans-serif;
+        cursor: pointer; min-height: 44px; margin-top: auto;
+        transition: background 0.25s, border-color 0.25s;
+    }
+    .pcard-btn:hover { background: var(--sand); border-color: var(--black); }
+    .bk-buy-btn {
+        display:block; width:100%; padding:13px; margin-top:10px;
+        background:transparent; color:var(--black);
+        border:1px solid rgba(42,40,37,0.25);
+        font-size:9px; letter-spacing:3px; text-transform:uppercase;
+        font-weight:500; font-family:'DM Sans',sans-serif;
+        text-decoration:none; text-align:center;
+        transition:background 0.2s,border-color 0.2s,color 0.2s;
+        box-sizing:border-box;
+    }
+    .bk-buy-btn:hover { background:var(--black); color:#fff; border-color:var(--black); }
+    .bk-notify-link {
+        display:block; text-align:center; margin-top:8px;
+        font-size:9px; letter-spacing:2px; text-transform:uppercase;
+        color:rgba(42,40,37,0.4); text-decoration:underline;
+    }
+    .pcard-sizes {
+        display:flex; gap:10px; margin-bottom:12px; flex-wrap:wrap;
+    }
+    .sz-in {
+        font-size:10px; letter-spacing:2px; text-transform:uppercase;
+        font-family:'DM Sans',sans-serif; color:var(--black); font-weight:500;
+    }
+    .sz-out {
+        font-size:10px; letter-spacing:2px; text-transform:uppercase;
+        font-family:'DM Sans',sans-serif; color:rgba(42,40,37,0.25);
+        text-decoration:line-through;
+    }
+
+    /* ── SECTION WRAPPERS ── */
+    .sec-available {
+        background: var(--white);
+        padding: clamp(48px,7vw,96px) clamp(20px,4vw,52px);
+    }
+    .sec-preorder {
+        background: var(--sand);
+        padding: clamp(48px,7vw,96px) clamp(20px,4vw,52px);
+    }
+    .sec-lookbook {
+        background: var(--white);
+        padding: clamp(48px,7vw,96px) clamp(20px,4vw,52px);
+    }
+
+    /* ── VIDEO STRIP ── */
+    .video-strip {
+        position: relative; width: 100%;
+        height: clamp(50vh, 65vw, 80vh);
+        overflow: hidden;
+    }
+    .video-strip video {
+        width:100%; height:100%; object-fit:cover; display:block;
+        filter: saturate(0.82) contrast(1.04);
+    }
+    .video-strip-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(to bottom,
+            rgba(10,8,6,0.25) 0%, rgba(10,8,6,0) 40%,
+            rgba(10,8,6,0) 60%, rgba(10,8,6,0.6) 100%);
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: flex-end;
+        padding-bottom: clamp(32px, 5vw, 64px);
+        text-align: center;
+    }
+    .vs-label {
+        font-size: 8px; letter-spacing: 4px; text-transform: uppercase;
+        color: rgba(255,255,255,0.4); margin-bottom: 10px;
+    }
+    .vs-text {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(36px, 6vw, 80px);
+        color: #fff; letter-spacing: 2px; line-height: 0.9;
+    }
+    .vs-text em {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic; font-weight: 300;
+        font-size: 0.75em; color: rgba(255,255,255,0.7);
+        display: block; margin-top: 4px;
+    }
+
+    /* ── LOOKBOOK DRAGGABLE ── */
+    .lb-canvas {
+        position: relative;
+        width: 100%;
+        height: 620px;
+        overflow: hidden;
+        cursor: default;
+    }
+    @media (max-width: 640px) { .lb-canvas { height: 480px; } }
+
+    .lb-card {
+        position: absolute;
+        user-select: none;
+        -webkit-user-select: none;
+        cursor: grab;
+        transition: box-shadow 0.2s;
+        will-change: transform;
+    }
+    .lb-card:active { cursor: grabbing; }
+    .lb-card.dragging { box-shadow: 0 20px 60px rgba(0,0,0,0.55); z-index: 99 !important; }
+    .lb-card img {
+        display: block;
+        pointer-events: none;
+        object-fit: cover;
+        filter: saturate(0.88);
+        transition: filter 0.3s;
+    }
+    .lb-card:hover img { filter: saturate(1.05); }
+    /* ── HOVER VIDEO ── */
+    .pcard-video {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%; object-fit: cover;
+        opacity: 0; transition: opacity 0.4s ease;
+        pointer-events: none;
+    }
+    .pcard-hover-video:hover .pcard-video { opacity: 1; }
+    .pcard-hover-video:hover .pcard-img img { opacity: 0; transition: opacity 0.4s ease; }
+
+    .lb-hint {
+        text-align: center;
+        margin-top: 18px;
+        font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+        color: rgba(17,17,17,0.2);
+    }
+
+    /* ── DISCOUNT ── */
+    .sec-discount {
+        background: var(--sand);
+        padding: clamp(56px,9vw,110px) clamp(20px,4vw,52px);
+        text-align: center;
+        border-top: 1px solid rgba(42,40,37,0.08);
+        border-bottom: 1px solid rgba(42,40,37,0.08);
+    }
+    .disc-eyebrow {
+        font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+        color: rgba(42,40,37,0.3); margin-bottom: 20px;
+    }
+    .disc-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(56px, 10vw, 130px);
+        font-weight: 400; line-height: 0.88;
+        color: var(--black); margin-bottom: 6px; letter-spacing: 1px;
+    }
+    .disc-title em {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic; font-weight: 300;
+        color: var(--rust); display: block; font-size: 0.68em;
+    }
+    .disc-sub {
+        font-size: 12px; color: rgba(42,40,37,0.4); font-weight: 300;
+        line-height: 1.85; max-width: 360px; margin: 24px auto 28px;
+    }
+    .disc-code-wrap {
+        display: inline-flex; align-items: center;
+        margin: 0 auto 28px; border: 1px solid rgba(42,40,37,0.18);
+    }
+    .disc-code {
+        font-family: 'Helvetica Neue', monospace;
+        font-size: clamp(14px, 2.5vw, 20px);
+        letter-spacing: 4px; font-weight: 700;
+        color: var(--black); padding: 14px 24px;
+        background: rgba(42,40,37,0.04);
+    }
+    .copy-btn {
+        padding: 14px 20px; background: var(--rust); color: #fff; border: none;
+        font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+        cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 500;
+        transition: background 0.2s; white-space: nowrap;
+    }
+    .copy-btn:hover { background: var(--black); }
+    .disc-cta {
+        display: inline-flex; align-items: center; gap: 10px;
+        background: transparent; color: var(--black); border: 1px solid rgba(42,40,37,0.3);
+        padding: 16px 44px;
+        font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+        font-weight: 500; font-family: 'DM Sans', sans-serif;
+        cursor: pointer; min-height: 52px;
+        transition: background 0.25s, border-color 0.25s;
+    }
+    .disc-cta:hover { background: var(--white); border-color: var(--black); }
+
+    /* ── FOOTER ── */
+    /* ── UGC SECTION ── */
+    .ugc-section {
+        background: var(--sand);
+        padding: clamp(64px,10vw,120px) clamp(20px,4vw,56px);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(40px,6vw,100px);
+        align-items: center;
+    }
+    .ugc-eyebrow {
+        font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+        color: rgba(17,17,17,0.35); font-weight: 400; margin-bottom: 16px;
+    }
+    .ugc-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(36px, 5vw, 62px);
+        font-weight: 700; line-height: 0.9; letter-spacing: -1.5px;
+        color: var(--black); margin-bottom: 8px;
+    }
+    .ugc-title em {
+        font-style: italic; font-weight: 400;
+        color: rgba(17,17,17,0.35);
+    }
+    .ugc-body {
+        font-size: 13px; color: rgba(17,17,17,0.5);
+        line-height: 1.85; font-weight: 300;
+        max-width: 420px; margin: 20px 0 32px;
+    }
+    .ugc-perks {
+        list-style: none; display: flex; flex-direction: column; gap: 10px;
+        margin-bottom: 36px;
+    }
+    .ugc-perks li {
+        font-size: 11px; letter-spacing: 1px; color: rgba(17,17,17,0.55);
+        font-weight: 400; display: flex; align-items: center; gap: 10px;
+    }
+    .ugc-perks li::before {
+        content: '✦'; color: var(--rust); font-size: 8px; flex-shrink: 0;
+    }
+    .ugc-btn {
+        display: inline-flex; align-items: center; gap: 12px;
+        background: transparent; color: var(--black);
+        padding: 16px clamp(28px,3vw,44px);
+        font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+        font-weight: 500; font-family: 'DM Sans', sans-serif;
+        border: 1px solid rgba(42,40,37,0.3); cursor: pointer; text-decoration: none;
+        transition: background 0.25s, border-color 0.25s;
+    }
+    .ugc-btn:hover { background: var(--white); border-color: var(--black); }
+    .ugc-visual {
+        position: relative;
+        display: flex; flex-direction: column; gap: 12px;
+    }
+    .ugc-card {
+        background: var(--white);
+        padding: 28px 32px;
+        border-left: 2px solid var(--rust);
+    }
+    .ugc-card-num {
+        font-family: 'Playfair Display', serif;
+        font-size: 40px; font-weight: 700; color: rgba(17,17,17,0.08);
+        line-height: 1; margin-bottom: 4px;
+    }
+    .ugc-card-title {
+        font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+        font-weight: 600; color: var(--black); margin-bottom: 4px;
+    }
+    .ugc-card-text {
+        font-size: 11px; color: rgba(17,17,17,0.45); line-height: 1.6; font-weight: 300;
+    }
+    @media (max-width: 768px) {
+        .ugc-section { grid-template-columns: 1fr; }
+        .ugc-visual { display: none; }
+    }
+
+    .footer {
+        background: var(--sand);
+        border-top: 1px solid rgba(42,40,37,0.1);
+        padding: clamp(40px,6vw,70px) clamp(20px,4vw,56px) clamp(24px,4vw,48px);
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: 40px;
+    }
+    .footer-brand {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-weight: 700; font-size: 17px; letter-spacing: 1.5px;
+        color: var(--black); margin-bottom: 8px;
+    }
+    .footer-tag {
+        font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+        color: rgba(42,40,37,0.3); margin-bottom: 18px;
+    }
+    .footer-ig {
+        font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+        color: rgba(42,40,37,0.45); text-decoration: none;
+        transition: color 0.2s;
+    }
+    .footer-ig:hover { color: var(--rust); }
+    .footer-col h4 {
+        font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
+        color: rgba(42,40,37,0.3); margin-bottom: 16px; font-weight: 500;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+        font-size: 12px; color: rgba(42,40,37,0.45);
+        text-decoration: none; font-weight: 300; transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--black); }
+    .footer-bottom {
+        background: var(--sand);
+        padding: 14px clamp(20px,4vw,56px);
+        border-top: 1px solid rgba(42,40,37,0.07);
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy {
+        font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+        color: rgba(42,40,37,0.2);
+    }
+    @media (max-width: 640px) {
+        .footer { grid-template-columns: 1fr; gap: 28px; }
+        .footer-bottom { flex-direction: column; gap: 6px; }
+    }
+
+    /* ── WELCOME POPUP ── */
+    .wp-overlay {
+        display: none; position: fixed; inset: 0; z-index: 300;
+        background: rgba(42,40,37,0.45);
+        backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        align-items: center; justify-content: center;
+        padding: 16px;
+    }
+    .wp-overlay.open { display: flex; }
+    .wp-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%; max-width: 860px;
+        min-height: 520px;
+        position: relative;
+        animation: slideUp 0.45s cubic-bezier(0.16,1,0.3,1) both;
+        overflow: hidden;
+    }
+    /* LEFT PANEL */
+    .wp-left {
+        background: #E8E3DC;
+        padding: 52px 44px;
+        display: flex; flex-direction: column;
+        justify-content: space-between;
+        position: relative; overflow: hidden;
+    }
+    .wp-left-brand {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-weight: 700; font-size: 11px; letter-spacing: 4px;
+        text-transform: uppercase; color: rgba(42,40,37,0.35);
+    }
+    .wp-left-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(52px, 6vw, 80px);
+        font-weight: 700; line-height: 0.88; letter-spacing: -2px;
+        color: var(--black);
+        margin: 0;
+    }
+    .wp-left-title em {
+        font-style: italic; font-weight: 400;
+        color: var(--rust);
+        display: block;
+    }
+    .wp-left-tag {
+        font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+        color: rgba(42,40,37,0.35); font-weight: 400;
+        border-top: 1px solid rgba(42,40,37,0.12);
+        padding-top: 16px;
+    }
+    /* RIGHT PANEL */
+    .wp-right {
+        background: var(--sand);
+        padding: 48px 40px 40px;
+        display: flex; flex-direction: column;
+        justify-content: center; gap: 0;
+        position: relative;
+    }
+    .wp-close {
+        position: absolute; top: 16px; right: 20px;
+        background: none; border: none; cursor: pointer;
+        font-size: 18px; color: rgba(17,17,17,0.3);
+        line-height: 1; padding: 4px; transition: color 0.2s;
+    }
+    .wp-close:hover { color: var(--black); }
+    .wp-eyebrow {
+        font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+        color: rgba(17,17,17,0.35); font-weight: 400; margin-bottom: 10px;
+    }
+    .wp-right-heading {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(28px, 3.5vw, 38px);
+        font-weight: 700; line-height: 1.1; letter-spacing: -0.5px;
+        color: var(--black); margin-bottom: 8px;
+    }
+    .wp-right-heading em {
+        font-style: italic; font-weight: 400;
+        color: rgba(17,17,17,0.4);
+    }
+    .wp-sub {
+        font-size: 12px; color: rgba(17,17,17,0.45);
+        line-height: 1.75; font-weight: 300;
+        margin-bottom: 28px;
+    }
+    .wp-form { display: flex; flex-direction: column; gap: 0; }
+    .wp-form input {
+        width: 100%; padding: 14px 0;
+        border: none; border-bottom: 1px solid rgba(17,17,17,0.2);
+        background: transparent;
+        font-size: 16px; font-family: 'DM Sans', sans-serif;
+        color: var(--black); outline: none;
+        border-radius: 0; -webkit-appearance: none;
+        transition: border-color 0.2s;
+        margin-bottom: 16px;
+    }
+    .wp-form input:focus { border-bottom-color: var(--black); }
+    .wp-form input.error { border-bottom-color: var(--rust); }
+    .wp-form input::placeholder { color: rgba(17,17,17,0.28); }
+    .wp-submit {
+        width: 100%; padding: 16px;
+        background: var(--rust); color: #fff; border: none;
+        font-size: 9px; letter-spacing: 3.5px; text-transform: uppercase;
+        font-weight: 500; font-family: 'DM Sans', sans-serif;
+        cursor: pointer; min-height: 52px;
+        transition: background 0.25s; margin-top: 8px;
+    }
+    .wp-submit:hover:not(:disabled) { background: var(--black); }
+    .wp-submit:disabled { background: rgba(42,40,37,0.12); cursor: not-allowed; }
+    .wp-skip {
+        display: block; margin-top: 14px;
+        font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+        color: rgba(17,17,17,0.22); cursor: pointer; background: none; border: none;
+        font-family: 'DM Sans', sans-serif;
+        transition: color 0.2s; text-align: center;
+    }
+    .wp-skip:hover { color: rgba(17,17,17,0.5); }
+    .wp-code-box { display: none; }
+    .wp-success {
+        display: none; text-align: center; padding: 20px 0;
+    }
+    .wp-success-icon { font-size: 32px; margin-bottom: 16px; }
+    .wp-success-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 42px; font-weight: 700;
+        line-height: 0.9; color: var(--black); margin-bottom: 12px;
+    }
+    .wp-success-code {
+        font-size: 10px; letter-spacing: 3px; color: var(--black);
+        font-weight: 600; text-transform: uppercase; margin-top: 16px;
+        border: 1px solid rgba(17,17,17,0.2); padding: 12px 20px;
+        display: inline-block;
+    }
+    @media (max-width: 640px) {
+        .wp-box { grid-template-columns: 1fr; min-height: auto; }
+        .wp-left { display: none; }
+        .wp-right { padding: 40px 28px 36px; }
+    }
+
+    /* ── MODAL ── */
+    .overlay {
+        display: none; position: fixed; inset: 0; z-index: 200;
+        background: rgba(10,8,6,0.88);
+        backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        overflow-y: auto; -webkit-overflow-scrolling: touch;
+        padding: 60px 16px 40px;
+        align-items: flex-start; justify-content: center;
+    }
+    .overlay.open { display: flex; }
+    .modal {
+        background: var(--sand); width: 100%; max-width: 420px; margin: auto;
+        padding: clamp(36px,6vw,54px) clamp(28px,5vw,46px) clamp(30px,5vw,44px);
+        position: relative;
+        animation: slideUp 0.3s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    @keyframes slideUp {
+        from { opacity:0; transform:translateY(22px); }
+        to   { opacity:1; transform:translateY(0); }
+    }
+    .modal-close {
+        position: absolute; top: 14px; right: 16px;
+        background: none; border: none; font-size: 18px;
+        color: rgba(0,0,0,0.28); cursor: pointer; padding: 8px;
+        min-width: 40px; min-height: 40px;
+        display: flex; align-items: center; justify-content: center;
+        transition: color 0.18s;
+    }
+    .modal-close:hover { color: var(--black); }
+    .modal-eyebrow {
+        font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+        color: rgba(0,0,0,0.3); margin-bottom: 11px;
+        display: flex; align-items: center; gap: 10px;
+    }
+    .modal-eyebrow::before { content:''; width:18px; height:1px; background:rgba(0,0,0,0.18); }
+    .modal-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(40px,8vw,52px); line-height: 0.88;
+        color: var(--black); margin-bottom: 10px; letter-spacing: 1px;
+    }
+    .modal-title em {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic; font-weight: 300; font-size: 0.88em;
+    }
+    .modal-sub {
+        font-size: 13px; color: rgba(0,0,0,0.4);
+        font-weight: 300; line-height: 1.75; margin-bottom: 26px;
+    }
+    .form-fields { display: flex; flex-direction: column; gap: 9px; margin-bottom: 10px; }
+    .form-fields input {
+        width:100%; padding: 13px 15px;
+        border: 1px solid rgba(0,0,0,0.12); background: #fff;
+        font-size: 16px; font-family: 'DM Sans', sans-serif;
+        color: var(--black); outline: none;
+        border-radius: 0; -webkit-appearance: none;
+        transition: border-color 0.2s;
+    }
+    .form-fields input:focus { border-color: var(--rust); }
+    .form-fields input.error { border-color: #360709; }
+    .form-fields input::placeholder { color: rgba(0,0,0,0.26); }
+    .submit-btn {
+        width:100%; padding: 15px;
+        background: var(--rust); color: #fff; border: none;
+        font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase;
+        font-weight: 500; font-family: 'DM Sans', sans-serif;
+        cursor: pointer; border-radius: 0; margin-top: 2px;
+        min-height: 48px; transition: background 0.25s;
+    }
+    .submit-btn:hover:not(:disabled) { background: var(--black); }
+    .submit-btn:disabled { background: rgba(42,40,37,0.15); cursor: not-allowed; }
+    .disclaimer { font-size: 9.5px; color: rgba(0,0,0,0.26); text-align: center; margin-top: 11px; }
+    .success { display: none; text-align: center; padding: 10px 0; }
+    .success-icon { font-size: 30px; margin-bottom: 14px; }
+    .success-title {
+        font-family: 'Bebas Neue', sans-serif; font-size: 44px;
+        line-height: 0.9; color: var(--black); margin-bottom: 10px;
+    }
+    .success-sub { font-size: 13px; color: rgba(0,0,0,0.4); font-weight: 300; line-height: 1.72; }
+    @media (max-width: 480px) {
+        .modal { max-width: 100%; padding: 40px 24px 32px; }
+    }
+    </style>
+</head>
+<body>
+
+<!-- ══ ANNOUNCEMENT BAR ══ -->
+<div class="announcement-bar">
+    10% off your first order — code <strong>LEPLANB10</strong> &nbsp;·&nbsp; Bikinis available now &nbsp;·&nbsp; Activewear available now
+</div>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+    <a class="nav-brand" href="#">LeplanB</a>
+    <ul class="nav-links">
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#preorder">Pre-order</a></li>
+        <li><a href="#lookbook">Lookbook</a></li>
+        <li><a href="#bikini-lookbook">Bikinis</a></li>
+        <li><a href="#discount">10% Off</a></li>
+    </ul>
+    <div class="nav-actions">
+        <a href="https://www.instagram.com/leplanb___" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4.5"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+        </a>
+        <button class="nav-cta" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+    </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+    <div class="hero-media">
+        <video autoplay muted loop playsinline preload="auto" poster="img/p4_fullbody.jpg">
+            <source src="img/hero.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="hero-content">
+        <p class="hero-eyebrow">Collection SS26 · Ericeira, Portugal</p>
+        <h1 class="hero-title">
+            For people<br>
+            <em>OFF SCRIPT</em>
+        </h1>
+        <div class="hero-btns">
+            <button class="btn-primary" onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">
+                Shop Now →
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- ══ TICKER ══ -->
+<div class="ticker-wrap">
+    <div class="ticker">
+        <span>LeplanB &nbsp;·&nbsp; <b>SS26</b> &nbsp;·&nbsp; Ericeira &nbsp;·&nbsp; Activewear available now &nbsp;·&nbsp; Bikinis available now &nbsp;·&nbsp; Use <b>LEPLANB10</b> — 10% off &nbsp;·&nbsp; </span>
+        <span>LeplanB &nbsp;·&nbsp; <b>SS26</b> &nbsp;·&nbsp; Ericeira &nbsp;·&nbsp; Activewear available now &nbsp;·&nbsp; Bikinis available now &nbsp;·&nbsp; Use <b>LEPLANB10</b> — 10% off &nbsp;·&nbsp; </span>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     THE COLLECTION — CATEGORY SPLIT
+══════════════════════════════════════════ -->
+<style>
+.col-card { display:block; text-decoration:none; position:relative; overflow:hidden; aspect-ratio:2/3; }
+.col-card img { width:100%; height:100%; object-fit:cover; transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94); display:block; }
+.col-card:hover img { transform:scale(1.04); }
+.col-card-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(20,18,16,0.52) 0%, rgba(20,18,16,0.08) 55%, transparent 100%); }
+.col-card-body { position:absolute; bottom:0; left:0; right:0; padding:clamp(20px,3.5vw,36px); }
+.col-card-label { font-size:9px; letter-spacing:5px; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:8px; font-family:'DM Sans',sans-serif; font-weight:400; }
+.col-card-title { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:clamp(26px,3.5vw,42px); color:#fff; line-height:1.05; letter-spacing:0.5px; margin-bottom:14px; }
+.col-card-cta { display:inline-flex; align-items:center; gap:8px; font-size:8px; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.75); font-family:'DM Sans',sans-serif; border-bottom:1px solid rgba(255,255,255,0.3); padding-bottom:2px; transition:color 0.3s,border-color 0.3s; }
+.col-card:hover .col-card-cta { color:#fff; border-color:rgba(255,255,255,0.7); }
+</style>
+
+<section id="collection" style="background:var(--white);padding:clamp(60px,8vw,100px) clamp(20px,4vw,56px) 0;">
+    <p style="font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(42,40,37,0.28);margin-bottom:16px;text-align:center;">SS26 · Ericeira, Portugal</p>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(32px,5vw,60px);color:var(--black);margin-bottom:clamp(28px,4vw,48px);text-align:center;letter-spacing:1px;">The Collection</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:1000px;margin:0 auto;">
+        <a class="col-card" href="#preorder" onclick="event.preventDefault();document.getElementById('preorder').scrollIntoView({behavior:'smooth'})">
+            <img src="img/p3_fullset_lunares.jpg" alt="Activewear">
+            <div class="col-card-overlay"></div>
+            <div class="col-card-body">
+                <div class="col-card-title">Activewear</div>
+                <div class="col-card-label" style="margin-bottom:14px;">Lunares · SS26</div>
+                <div class="col-card-cta">Shop now &nbsp;&#8594;</div>
+            </div>
+        </a>
+        <a class="col-card" href="#shop" onclick="event.preventDefault();document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
+            <img src="img/bk_rosa_static.jpg" alt="Bikinis">
+            <div class="col-card-overlay"></div>
+            <div class="col-card-body">
+                <div class="col-card-title">Bikinis</div>
+                <div class="col-card-label" style="margin-bottom:14px;">Lunares · SS26</div>
+                <div class="col-card-cta">Shop now &nbsp;&#8594;</div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ACTIVEWEAR — PRODUCT PAGE
+══════════════════════════════════════════ -->
+<section id="preorder" style="background:var(--sand);padding:clamp(48px,7vw,96px) clamp(20px,4vw,52px);">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:start;">
+        <!-- FOTOS -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <img src="img/p3_fullset_lunares.jpg" alt="Full Set Lunares" style="width:100%;aspect-ratio:3/4;object-fit:cover;grid-column:1/-1;">
+            <img src="img/p4_fullbody.jpg" alt="Full Set detalle" style="width:100%;aspect-ratio:2/3;object-fit:cover;">
+            <img src="img/p5_twogirls.jpg" alt="Full Set modelo" style="width:100%;aspect-ratio:2/3;object-fit:cover;">
+        </div>
+        <!-- INFO -->
+        <div style="position:sticky;top:calc(var(--nav-h) + 24px);">
+            <p style="font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(42,40,37,0.4);margin-bottom:12px;">Activewear · SS26</p>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);letter-spacing:2px;color:var(--black);line-height:1;margin-bottom:6px;">FULL SET</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(20px,2.5vw,28px);color:var(--rust);margin-bottom:24px;">Lunares</div>
+            <div style="font-size:28px;font-weight:300;color:var(--black);margin-bottom:28px;letter-spacing:1px;">€95</div>
+            <p style="font-size:12px;line-height:1.7;color:rgba(42,40,37,0.6);margin-bottom:16px;">Top + Short · High-compression · Surf &amp; swim ready · Quick-dry · Edición limitada · Ericeira</p>
+            <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:24px;">Only 1 left</p>
+            <button class="bk-buy-btn" onclick="openSizeModal('Activewear Full Set',[{s:'S',id:'54191821881677',a:false},{s:'M',id:'54191821914445',a:false},{s:'L',id:'54191821947213',a:false},{s:'XL',id:'54191821979981',a:true}],['img/p3_fullset_lunares.jpg','img/p4_fullbody.jpg','img/p5_twogirls.jpg'],'€95')">Buy Now →</button>
+            <p style="margin-top:16px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(42,40,37,0.35);text-align:center;">Disponible ahora · Envío inmediato</p>
+        </div>
+    </div>
+</section>
+
+<!-- ══ VIDEO STRIP ══ -->
+<div class="video-strip">
+    <video autoplay muted loop playsinline preload="auto">
+        <source src="img/product.mp4" type="video/mp4">
+    </video>
+    <div class="video-strip-overlay">
+    </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 2 — AVAILABLE NOW (BIKINIS)
+══════════════════════════════════════════ -->
+<section class="sec-available" id="shop">
+    <div class="section-header">
+        <div class="section-title">
+            Bikinis<br><em>Lunares</em>
+        </div>
+        <span class="status-badge badge-available">In Stock · Ships Now</span>
+    </div>
+
+    <div class="cards-grid" style="grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.5vw,18px);">
+
+        <!-- ROSA + ROJO -->
+        <div class="pcard pcard-hover-video">
+            <div class="pcard-img">
+                <img src="img/bk_rosa_static.jpg" alt="Bikini Rosa + Rojo" loading="lazy">
+                <video class="pcard-video" src="img/bk_rosa_hover.mp4" muted loop playsinline preload="none"></video>
+                <span class="pcard-badge rust">Only 1 left</span>
+            </div>
+            <div class="pcard-body">
+                <span class="pcard-cat">Bikini · SS26</span>
+                <div class="pcard-name">Rosa + Rojo<br><em>Lunares</em></div>
+                <div class="pcard-price">€75</div>
+                <button class="bk-buy-btn" onclick="openSizeModal('Rosa + Rojo',[{s:'XS',id:'54231110943053',a:false},{s:'S',id:'54231110910285',a:false},{s:'M',id:'54231110877517',a:true},{s:'L',id:'54231110844749',a:false},{s:'XL',id:'54231110811981',a:false}],['img/bk_rosa_static.jpg'],'€75')">Buy Now →</button>
+            </div>
+        </div>
+
+        <!-- AZUL + VERDE -->
+        <div class="pcard pcard-hover-video">
+            <div class="pcard-img">
+                <img src="img/bk_azul_static.jpg" alt="Bikini Azul + Verde" loading="lazy">
+                <video class="pcard-video" src="img/bk_azul_hover.mp4" muted loop playsinline preload="none"></video>
+                <span class="pcard-badge rust">Only 1 left</span>
+            </div>
+            <div class="pcard-body">
+                <span class="pcard-cat">Bikini · SS26</span>
+                <div class="pcard-name">Azul + Verde<br><em>Lunares</em></div>
+                <div class="pcard-price">€75</div>
+
+                <button class="bk-buy-btn" onclick="openSizeModal('Azul + Verde',[{s:'XS',id:'54231112515917',a:false},{s:'S',id:'54231112483149',a:true},{s:'M',id:'54231112450381',a:false},{s:'L',id:'54231112417613',a:false}],['img/bk_azul_static.jpg'],'€75')">Buy Now →</button>
+            </div>
+        </div>
+
+        <!-- ROSA + CAFÉ -->
+        <div class="pcard pcard-hover-video">
+            <div class="pcard-img">
+                <img src="img/bk_nude_static.jpg" alt="Bikini Rosa + Café" loading="lazy">
+                <video class="pcard-video" src="img/bk_nude_hover.mp4" muted loop playsinline preload="none"></video>
+                <span class="pcard-badge rust">Only 1 left</span>
+            </div>
+            <div class="pcard-body">
+                <span class="pcard-cat">Bikini · SS26</span>
+                <div class="pcard-name">Rosa + Café<br><em>Lunares</em></div>
+                <div class="pcard-price">€75</div>
+
+                <button class="bk-buy-btn" onclick="openSizeModal('Rosa + Café',[{s:'XS',id:'54231109468493',a:false},{s:'S',id:'54231109566797',a:false},{s:'M',id:'54231109534029',a:true},{s:'L',id:'54231109501261',a:false}],['img/bk_nude_static.jpg','img/bk_nude_2.jpg','img/bk_nude_3.jpg','img/bk_nude_4.jpg'],'€75')">Buy Now →</button>
+            </div>
+        </div>
+
+        <!-- BLANCO + ROJO -->
+        <div class="pcard pcard-hover-video">
+            <div class="pcard-img">
+                <img src="img/bk_blanco_static.jpg" alt="Bikini Blanco + Rojo" loading="lazy">
+                <video class="pcard-video" src="img/bk_blanco_hover.mp4" muted loop playsinline preload="none"></video>
+                <span class="pcard-badge rust">Only 1 left</span>
+            </div>
+            <div class="pcard-body">
+                <span class="pcard-cat">Bikini · SS26</span>
+                <div class="pcard-name">Blanco + Rojo<br><em>Lunares</em></div>
+                <div class="pcard-price">€75</div>
+
+                <button class="bk-buy-btn" onclick="openSizeModal('Blanco + Rojo',[{s:'XS',id:'54231113367885',a:false},{s:'S',id:'54231113466189',a:false},{s:'M',id:'54231113433421',a:true},{s:'L',id:'54231113400653',a:false}],['img/bk_blanco_static.jpg','img/bk_blanco_2.jpg','img/bk_blanco_3.jpg','img/bk_blanco_4.jpg','img/bk_blanco_5.jpg'],'€75')">Buy Now →</button>
+            </div>
+        </div>
+
+        <!-- CAFÉ + BEIGE -->
+        <div class="pcard pcard-hover-video">
+            <div class="pcard-img">
+                <img src="img/bk_cacao_static.jpg" alt="Bikini Café + Beige" loading="lazy">
+                <video class="pcard-video" src="img/bk_cacao_hover.mp4" muted loop playsinline preload="none"></video>
+                <span class="pcard-badge rust">Only 1 left</span>
+            </div>
+            <div class="pcard-body">
+                <span class="pcard-cat">Bikini · SS26</span>
+                <div class="pcard-name">Café + Beige<br><em>Lunares</em></div>
+                <div class="pcard-price">€75</div>
+
+                <button class="bk-buy-btn" onclick="openSizeModal('Café + Beige',[{s:'XS',id:'',a:false},{s:'S',id:'',a:false},{s:'M',id:'',a:false},{s:'L',id:'54231107600717',a:true},{s:'XL',id:'',a:false}],['img/bk_cacao_static.jpg'],'€75')">Buy Now →</button>
+            </div>
+        </div>
+
+        <!-- AMARILLO + AZUL -->
+        <div class="pcard pcard-hover-video">
+            <div class="pcard-img">
+                <img src="img/bk_sol_static.jpg" alt="Bikini Amarillo + Azul" loading="lazy">
+                <video class="pcard-video" src="img/bk_sol_hover.mp4" muted loop playsinline preload="none"></video>
+                <span class="pcard-badge rust">Only 2 left</span>
+            </div>
+            <div class="pcard-body">
+                <span class="pcard-cat">Bikini · SS26</span>
+                <div class="pcard-name">Amarillo + Azul<br><em>Lunares</em></div>
+                <div class="pcard-price">€75</div>
+
+                <button class="bk-buy-btn" onclick="openSizeModal('Amarillo + Azul',[{s:'XS',id:'',a:false},{s:'S',id:'',a:false},{s:'M',id:'54231105962317',a:true},{s:'L',id:'',a:false},{s:'XL',id:'',a:false}],['img/bk_sol_static.jpg','img/bk_sol_2.jpg'],'€75')">Buy Now →</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <p style="text-align:center;margin-top:28px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(42,40,37,0.3);">Use code <strong style="color:var(--rust);">LEPLANB10</strong> for 10% off · Free shipping on orders +€79</p>
+</section>
+
+<!-- ══ DISCOUNT ══ -->
+<section class="sec-discount" id="discount">
+    <p class="disc-eyebrow">First order offer</p>
+    <h2 class="disc-title">10% Off<br><em>your first order.</em></h2>
+    <p class="disc-sub">Use the code below at checkout. Valid on all SS26 pieces — bikinis and activewear.</p>
+    <div style="display:flex;justify-content:center;">
+        <div class="disc-code-wrap">
+            <span class="disc-code">LEPLANB10</span>
+            <button class="copy-btn" onclick="navigator.clipboard.writeText('LEPLANB10');this.textContent='Copied ✓';setTimeout(()=>this.textContent='Copy',2000)">Copy</button>
+        </div>
+    </div>
+    <button class="disc-cta" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop the Collection →</button>
+    <p style="margin-top:16px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2);">⚡ Very limited pieces · Delivery 15–20 July</p>
+</section>
+
+<!-- ══ UGC ══ -->
+<section class="ugc-section" id="ugc">
+    <div>
+        <div class="ugc-eyebrow">Creators & Collaborations</div>
+        <div class="ugc-title">Create with<br><em>LeplanB.</em></div>
+        <p class="ugc-body">We work with creators who live the same life we design for — the ocean, the sun, the off-script moments. If that's you, we want to hear from you.</p>
+        <ul class="ugc-perks">
+            <li>Free SS26 pieces in exchange for content</li>
+            <li>Long-term brand ambassador opportunities</li>
+            <li>Affiliate commission on every sale</li>
+            <li>Featured on our channels & campaigns</li>
+        </ul>
+        <a class="ugc-btn" href="mailto:leplanb@gmail.com?subject=UGC%20Collaboration%20%40leplanb___">Apply to collaborate →</a>
+    </div>
+    <div class="ugc-visual">
+        <div class="ugc-card">
+            <div class="ugc-card-num">01</div>
+            <div class="ugc-card-title">Get your pieces</div>
+            <div class="ugc-card-text">We send you selected SS26 pieces — no cost, no catch. Just wear them your way.</div>
+        </div>
+        <div class="ugc-card">
+            <div class="ugc-card-num">02</div>
+            <div class="ugc-card-title">Create content</div>
+            <div class="ugc-card-text">Film, photograph, post. Authentic content in your world — beach, city, wherever you are.</div>
+        </div>
+        <div class="ugc-card">
+            <div class="ugc-card-num">03</div>
+            <div class="ugc-card-title">Earn commission</div>
+            <div class="ugc-card-text">Every sale through your link earns you a cut. The better the content, the more you make.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     LOOKBOOKS (GROUPED, END OF PAGE)
+══════════════════════════════════════════ -->
+<section class="sec-lookbook" id="lookbook">
+    <div class="section-header">
+        <div class="section-title light">Lookbook<br><em>SS26</em></div>
+        <div style="display:flex;align-items:center;gap:20px;">
+            <span style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(17,17,17,0.25);">Activewear · Ericeira</span>
+            <span style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(17,17,17,0.25);font-family:'DM Sans',sans-serif;">Click to zoom</span>
+        </div>
+    </div>
+    <div class="lb-canvas" id="lbCanvas">
+        <div class="lb-card" data-w="210" data-h="280" data-x="2"   data-y="20"  data-r="-3"><img src="img/lb_a.jpg" width="210" height="280" alt="LeplanB SS26"></div>
+        <div class="lb-card" data-w="190" data-h="255" data-x="225" data-y="60"  data-r="2"><img src="img/lb_b.jpg" width="190" height="255" alt="LeplanB SS26"></div>
+        <div class="lb-card" data-w="175" data-h="260" data-x="430" data-y="10"  data-r="-1.5"><img src="img/lb_c.jpg" width="175" height="260" alt="LeplanB SS26"></div>
+        <div class="lb-card" data-w="200" data-h="265" data-x="615" data-y="40"  data-r="3"><img src="img/lb_d.jpg" width="200" height="265" alt="LeplanB SS26"></div>
+        <div class="lb-card" data-w="185" data-h="245" data-x="820" data-y="15"  data-r="-2"><img src="img/lb_e.jpg" width="185" height="245" alt="LeplanB SS26"></div>
+        <div class="lb-card" data-w="195" data-h="260" data-x="80"  data-y="290" data-r="2.5"><img src="img/lb_f.jpg" width="195" height="260" alt="LeplanB SS26"></div>
+        <div class="lb-card" data-w="185" data-h="250" data-x="320" data-y="310" data-r="-1"><img src="img/lb_g.jpg" width="185" height="250" alt="LeplanB SS26"></div>
+        <div class="lb-card" data-w="200" data-h="268" data-x="540" data-y="280" data-r="1.5"><img src="img/lb_h.jpg" width="200" height="268" alt="LeplanB SS26"></div>
+    </div>
+    <p class="lb-hint">✦ drag the photos ✦</p>
+</section>
+
+<section class="sec-available" id="bikini-lookbook" style="background:var(--white);padding:clamp(48px,7vw,96px) clamp(20px,4vw,52px);">
+    <div class="section-header">
+        <div class="section-title light">Bikini<br><em>Lookbook</em></div>
+        <div style="display:flex;align-items:center;gap:20px;">
+            <span style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(17,17,17,0.25);">Lunares SS26</span>
+            <span style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(17,17,17,0.25);font-family:'DM Sans',sans-serif;">Click to zoom</span>
+        </div>
+    </div>
+    <div class="lb-canvas" id="lbCanvas2" style="height:680px;">
+        <div class="lb-card" data-w="195" data-h="270" data-x="0"   data-y="10"  data-r="-2"><img src="img/blb_1.jpg" width="195" height="270" alt="LeplanB Bikini"></div>
+        <div class="lb-card" data-w="185" data-h="255" data-x="205" data-y="45"  data-r="2.5"><img src="img/blb_2.jpg" width="185" height="255" alt="LeplanB Bikini"></div>
+        <div class="lb-card" data-w="200" data-h="265" data-x="400" data-y="5"   data-r="-1.5"><img src="img/blb_3.jpg" width="200" height="265" alt="LeplanB Bikini"></div>
+        <div class="lb-card" data-w="180" data-h="250" data-x="610" data-y="35"  data-r="3"><img src="img/blb_4.jpg" width="180" height="250" alt="LeplanB Bikini"></div>
+        <div class="lb-card" data-w="190" data-h="255" data-x="800" data-y="10"  data-r="-2.5"><img src="img/blb_5.jpg" width="190" height="255" alt="LeplanB Bikini"></div>
+        <div class="lb-card" data-w="205" data-h="275" data-x="90"  data-y="310" data-r="1.5"><img src="img/blb_6.jpg" width="205" height="275" alt="LeplanB Bikini"></div>
+        <div class="lb-card" data-w="185" data-h="250" data-x="330" data-y="330" data-r="-1"><img src="img/blb_7.jpg" width="185" height="250" alt="LeplanB Bikini"></div>
+    </div>
+    <p class="lb-hint">✦ drag the photos ✦</p>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+    <div>
+        <div class="footer-brand">LeplanB</div>
+        <div class="footer-tag">For people off script</div>
+        <a class="footer-ig" href="https://www.instagram.com/leplanb___" target="_blank" rel="noopener">@leplanb___</a>
+    </div>
+    <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+            <li><a href="#shop">Bikinis SS26</a></li>
+            <li><a href="#preorder">Activewear Lunares</a></li>
+            <li><a href="#lookbook">Lookbook</a></li>
+        </ul>
+    </div>
+    <div class="footer-col">
+        <h4>Brand</h4>
+        <ul>
+            <li><a href="https://www.instagram.com/leplanb___" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="#" onclick="event.preventDefault();openModal()">Contact</a></li>
+            <li><a href="#discount">10% Off</a></li>
+        </ul>
+    </div>
+</footer>
+<div class="footer-bottom">
+    <span class="footer-copy">© 2026 LeplanB · Ericeira, Portugal</span>
+    <span class="footer-copy">SS26 Collection</span>
+</div>
+
+<!-- ══ WELCOME POPUP ══ -->
+<div class="wp-overlay" id="wpOverlay">
+    <div class="wp-box">
+        <!-- LEFT -->
+        <div class="wp-left">
+            <div class="wp-left-brand">LeplanB · SS26</div>
+            <div class="wp-left-title">10%<br>Off.<br><em>Your first<br>order.</em></div>
+            <div class="wp-left-tag">Ericeira, Portugal · Limited Edition</div>
+        </div>
+        <!-- RIGHT -->
+        <div class="wp-right">
+            <button class="wp-close" onclick="skipWelcome()">✕</button>
+            <div id="wpForm">
+                <div class="wp-eyebrow">Exclusive offer</div>
+                <div class="wp-right-heading">Join the list.<br><em>Get 10% off.</em></div>
+                <p class="wp-sub">Enter your email and Instagram — we'll send your code instantly. Valid on all SS26 pieces.</p>
+                <div class="wp-form">
+                    <input type="email" id="wpEmail" placeholder="your@email.com" autocomplete="email">
+                    <input type="text"  id="wpIg"    placeholder="@your_instagram" autocomplete="off">
+                    <button class="wp-submit" id="wpSubmit" onclick="submitWelcome()">Unlock My 10% Off →</button>
+                </div>
+                <button class="wp-skip" onclick="skipWelcome()">No thanks, I'll pay full price</button>
+            </div>
+            <div class="wp-success" id="wpSuccess">
+                <div class="wp-success-icon">🖤</div>
+                <div class="wp-success-title">You're in.</div>
+                <p style="font-size:12px;color:rgba(17,17,17,0.45);font-weight:300;line-height:1.75;margin-top:10px;">Your code is ready to use at checkout.</p>
+                <p class="wp-success-code">LEPLANB10</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══ PRODUCT OVERLAY (Zara-style) ══ -->
+<style>
+#prodOverlay { display:none;position:fixed;inset:0;z-index:2000;background:var(--sand);overflow:hidden; }
+#prodClose { position:fixed;top:16px;right:20px;z-index:10;background:none;border:none;font-size:20px;cursor:pointer;color:var(--black);line-height:1;padding:8px; }
+
+/* Desktop: left photos scroll, right info sticky */
+#prodInner { display:flex;height:100vh;overflow:hidden; }
+#prodPhotosCol { flex:1 1 60%;overflow-y:auto;scrollbar-width:none; }
+#prodPhotosCol::-webkit-scrollbar { display:none; }
+#prodPhotosCol img { display:block;width:100%;line-height:0; }
+#prodInfoCol { flex:0 0 340px;overflow-y:auto;padding:48px 36px 48px;background:var(--sand);border-left:1px solid rgba(42,40,37,0.08);scrollbar-width:none; }
+#prodInfoCol::-webkit-scrollbar { display:none; }
+
+/* Mobile: stack vertically, swipeable gallery on top */
+@media (max-width: 768px) {
+    #prodInner { flex-direction:column; overflow-y:auto; }
+    #prodPhotosCol { flex:none;overflow:hidden; }
+    #prodMobileGallery { position:relative; }
+    #prodTrackM { display:flex;transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+    #prodTrackM img { flex:0 0 100%;width:100%;aspect-ratio:3/4;object-fit:cover;display:block; }
+    #prodDotsM { display:flex;justify-content:center;gap:6px;padding:10px 0 4px; }
+    #prodInfoCol { flex:none;border-left:none;padding:24px 20px 40px; }
+    #prodPhotosCol .desk-imgs { display:none; }
+}
+@media (min-width:769px) {
+    #prodMobileGallery { display:none; }
+    #prodPhotosCol .desk-imgs { display:block; }
+}
+</style>
+
+<div id="prodOverlay">
+    <button id="prodClose" onclick="closeSizeModal()">✕</button>
+    <div id="prodInner">
+        <!-- PHOTOS COLUMN -->
+        <div id="prodPhotosCol">
+            <!-- Desktop: stacked -->
+            <div class="desk-imgs" id="prodImgsDesk"></div>
+            <!-- Mobile: swipeable -->
+            <div id="prodMobileGallery">
+                <div id="prodTrackM"></div>
+                <div id="prodDotsM"></div>
+            </div>
+        </div>
+
+        <!-- INFO COLUMN -->
+        <div id="prodInfoCol">
+            <p style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(42,40,37,0.4);font-family:'DM Sans',sans-serif;margin-bottom:10px;">Lunares · SS26</p>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px;gap:12px;">
+                <div id="prodName" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(24px,3vw,36px);color:var(--black);line-height:1.1;"></div>
+                <div id="prodPrice" style="font-size:20px;font-weight:300;color:var(--black);white-space:nowrap;"></div>
+            </div>
+            <div style="width:32px;height:1px;background:rgba(42,40,37,0.15);margin-bottom:28px;"></div>
+
+            <!-- SIZE PICKER -->
+            <div id="prodSizeView">
+                <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(42,40,37,0.4);font-family:'DM Sans',sans-serif;margin-bottom:14px;">Select size</p>
+                <div id="prodSizeBtns" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"></div>
+                <p style="font-size:9px;letter-spacing:1.5px;color:rgba(42,40,37,0.3);font-family:'DM Sans',sans-serif;line-height:1.6;">Crossed-out sizes are sold out.<br>Tap to be notified when they're back.</p>
+            </div>
+
+            <!-- NOTIFY VIEW -->
+            <div id="prodNotifyView" style="display:none;">
+                <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:26px;margin-bottom:6px;color:var(--black);">Don't miss out.</h3>
+                <p id="prodNotifyLabel" style="font-size:12px;color:rgba(42,40,37,0.55);margin-bottom:20px;line-height:1.7;"></p>
+                <div id="prodNotifySuccess" style="display:none;padding:8px 0;">
+                    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;margin-bottom:4px;color:var(--black);">You're on the list.</p>
+                    <p style="font-size:11px;color:rgba(42,40,37,0.5);">We'll let you know the moment it's back.</p>
+                </div>
+                <form id="prodNotifyForm" novalidate>
+                    <input type="email" id="pnEmail" placeholder="your@email.com" autocomplete="email" required style="display:block;width:100%;padding:12px;border:1px solid rgba(42,40,37,0.2);background:transparent;font-size:13px;font-family:'DM Sans',sans-serif;box-sizing:border-box;outline:none;margin-bottom:8px;">
+                    <input type="text" id="pnIg" placeholder="@your_instagram" autocomplete="off" style="display:block;width:100%;padding:12px;border:1px solid rgba(42,40,37,0.2);background:transparent;font-size:13px;font-family:'DM Sans',sans-serif;box-sizing:border-box;outline:none;margin-bottom:14px;">
+                    <button type="submit" style="display:block;width:100%;padding:14px;background:var(--black);color:#fff;border:none;font-size:9px;letter-spacing:3px;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;">Notify me →</button>
+                </form>
+                <button onclick="showProdSizes()" style="display:block;margin:12px auto 0;background:none;border:none;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(42,40,37,0.3);cursor:pointer;font-family:'DM Sans',sans-serif;">← Back to sizes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══ MODAL ══ -->
+<div class="overlay" id="overlay" role="presentation">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+        <div id="formView">
+            <p class="modal-eyebrow">LeplanB &nbsp;·&nbsp; SS26</p>
+            <h2 class="modal-title" id="modalTitle"><em>Join the list.</em><br>Get 10% off.</h2>
+            <p class="modal-sub">Tu email + tu Instagram — te mandamos el código al momento.</p>
+            <form id="theForm" novalidate>
+                <div class="form-fields">
+                    <input type="email" id="emailInput" placeholder="your@email.com" autocomplete="email" required>
+                    <input type="text"  id="igInput"    placeholder="@your_instagram" autocomplete="off">
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">Unlock my 10% off →</button>
+            </form>
+            <p class="disclaimer">No spam. Solo el drop cuando esté listo.</p>
+            <button onclick="closeModal()" style="display:block;margin:12px auto 0;background:none;border:none;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(42,40,37,0.3);cursor:pointer;font-family:'DM Sans',sans-serif;">No thanks, I'll pay full price</button>
+        </div>
+        <div class="success" id="successView">
+            <div class="success-icon">🌊</div>
+            <h2 class="success-title"><em>You're in.</em></h2>
+            <p class="success-sub">Revisa tu email — el 10% off ya está en camino.<br>Bienvenida a LeplanB.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ── LOOKBOOK DRAG ──
+    (function() {
+        let topZ = 10;
+        function initCards() {
+            const canvases = document.querySelectorAll('.lb-canvas');
+            canvases.forEach(canvas => initCanvas(canvas));
+        }
+        function initCanvas(canvas) {
+            const cw = canvas.offsetWidth;
+            const cards = canvas.querySelectorAll('.lb-card');
+
+            cards.forEach((card, i) => {
+                let x = parseFloat(card.dataset.x);
+                let y = parseFloat(card.dataset.y);
+                const r = parseFloat(card.dataset.r) || 0;
+                const w = parseFloat(card.dataset.w);
+
+                // scale positions to actual canvas width (designed for ~1050px)
+                const scale = Math.min(cw / 1050, 1);
+                x = x * scale;
+                y = y * scale;
+                const scaledW = w * scale;
+
+                card.style.cssText = `left:${x}px; top:${y}px; width:${scaledW}px; z-index:${i+1}; transform:rotate(${r}deg);`;
+                card.querySelector('img').style.width = '100%';
+                card.querySelector('img').style.height = 'auto';
+
+                let dragging = false, startX, startY, origX, origY;
+
+                function onDown(e) {
+                    dragging = true;
+                    card.classList.add('dragging');
+                    card.style.zIndex = ++topZ;
+                    const pt = e.touches ? e.touches[0] : e;
+                    startX = pt.clientX; startY = pt.clientY;
+                    origX = parseFloat(card.style.left);
+                    origY = parseFloat(card.style.top);
+                    e.preventDefault();
+                }
+                function onMove(e) {
+                    if (!dragging) return;
+                    const pt = e.touches ? e.touches[0] : e;
+                    const dx = pt.clientX - startX;
+                    const dy = pt.clientY - startY;
+                    let nx = origX + dx;
+                    let ny = origY + dy;
+                    // keep card mostly inside canvas
+                    nx = Math.max(-scaledW * 0.4, Math.min(cw - scaledW * 0.6, nx));
+                    ny = Math.max(-40, Math.min(canvas.offsetHeight - 60, ny));
+                    card.style.left = nx + 'px';
+                    card.style.top  = ny + 'px';
+                    e.preventDefault();
+                }
+                function onUp() {
+                    dragging = false;
+                    card.classList.remove('dragging');
+                }
+                card.addEventListener('mousedown',  onDown,  {passive:false});
+                card.addEventListener('touchstart', onDown,  {passive:false});
+                window.addEventListener('mousemove', onMove, {passive:false});
+                window.addEventListener('touchmove', onMove, {passive:false});
+                window.addEventListener('mouseup',  onUp);
+                window.addEventListener('touchend', onUp);
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initCards);
+        } else {
+            initCards();
+        }
+    })();
+
+    // ── WELCOME POPUP ──
+    function showWelcome() {
+        if (!localStorage.getItem('lpb_welcomed')) {
+            document.getElementById('wpOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+    function skipWelcome() {
+        document.getElementById('wpOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+        localStorage.setItem('lpb_welcomed', '1');
+    }
+    async function submitWelcome() {
+        const emailEl = document.getElementById('wpEmail');
+        const igEl    = document.getElementById('wpIg');
+        const btn     = document.getElementById('wpSubmit');
+        emailEl.classList.remove('error');
+        const email = emailEl.value.trim();
+        const ig    = igEl.value.trim();
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            emailEl.classList.add('error'); emailEl.focus(); return;
+        }
+        btn.disabled = true; btn.textContent = 'Sending...';
+        try {
+            await fetch(SCRIPT_URL, {
+                method: 'POST', mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: ig || 'popup', email, instagram: ig, timestamp: new Date().toISOString(), source: 'leplanb-popup' })
+            });
+        } catch (_) {}
+        document.getElementById('wpForm').style.display    = 'none';
+        document.getElementById('wpSuccess').style.display = 'block';
+        localStorage.setItem('lpb_welcomed', '1');
+        setTimeout(() => {
+            document.getElementById('wpOverlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }, 3000);
+    }
+    setTimeout(showWelcome, 1500);
+
+    function setVH() {
+        document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
+    setVH();
+    window.addEventListener('resize', setVH);
+    window.addEventListener('orientationchange', () => setTimeout(setVH, 150));
+
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('solid', window.scrollY > 80);
+    });
+
+    /* ── HOVER VIDEOS ── */
+    document.querySelectorAll('.pcard-hover-video').forEach(function(card){
+        var vid = card.querySelector('.pcard-video');
+        if(!vid) return;
+        card.addEventListener('mouseenter', function(){ vid.play(); });
+        card.addEventListener('mouseleave', function(){ vid.pause(); vid.currentTime=0; });
+    });
+
+    /* ── HERO PARALLAX (cursor) ── */
+    (function(){
+        const hero = document.querySelector('.hero');
+        const heroTitle = document.querySelector('.hero-title');
+        const heroEyebrow = document.querySelector('.hero-eyebrow');
+        const heroBtns = document.querySelector('.hero-btns');
+        const heroVideo = document.querySelector('.hero-media video');
+        if (!hero || window.matchMedia('(pointer:coarse)').matches) return;
+        let cx = 0, cy = 0, tx = 0, ty = 0, raf;
+        function lerp(a, b, n){ return a + (b - a) * n; }
+        function tick(){
+            tx = lerp(tx, cx, 0.07);
+            ty = lerp(ty, cy, 0.07);
+            if (heroVideo)  heroVideo.style.transform  = `translate(${tx*6}px, ${ty*4}px) scale(1.08)`;
+            if (heroTitle)  heroTitle.style.transform  = `translate(${-tx*14}px, ${-ty*10}px)`;
+            if (heroEyebrow) heroEyebrow.style.transform = `translate(${-tx*8}px, ${-ty*6}px)`;
+            if (heroBtns)   heroBtns.style.transform   = `translate(${-tx*5}px, ${-ty*3}px)`;
+            raf = requestAnimationFrame(tick);
+        }
+        hero.addEventListener('mousemove', e => {
+            const r = hero.getBoundingClientRect();
+            cx = (e.clientX - r.left) / r.width  - 0.5;
+            cy = (e.clientY - r.top)  / r.height - 0.5;
+        });
+        hero.addEventListener('mouseleave', () => { cx = 0; cy = 0; });
+        hero.addEventListener('mouseenter', () => { cancelAnimationFrame(raf); tick(); });
+        tick();
+    })();
+
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzen8QnHBog-rjBCJtFDhvRO09mXyfmCMATGnXleAf-9UdjLZU8Yvm11_f7SOpkGvnoBA/exec';
+
+    let notifyProduct = '';
+    function openModal(productName) {
+        notifyProduct = productName || '';
+        document.getElementById('overlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => document.getElementById('nameInput').focus(), 300);
+    }
+    function closeModal() {
+        document.getElementById('overlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    // ── PRODUCT OVERLAY ──
+    var _prodIndex = 0, _prodPhotos = [];
+
+    function openSizeModal(name, variants, photos, price) {
+        price = price || '';
+        photos = photos || [];
+        _prodPhotos = photos;
+        _prodIndex = 0;
+
+        // Name + price
+        document.getElementById('prodName').innerHTML = '<em>' + name + '</em>';
+        document.getElementById('prodPrice').textContent = price;
+
+        // Desktop: stacked images
+        var desk = document.getElementById('prodImgsDesk');
+        desk.innerHTML = '';
+        photos.forEach(function(src) {
+            var img = document.createElement('img');
+            img.src = src;
+            img.style.cssText = 'width:100%;display:block;';
+            desk.appendChild(img);
+        });
+
+        // Mobile: swipeable
+        var trackM = document.getElementById('prodTrackM');
+        trackM.innerHTML = '';
+        photos.forEach(function(src) {
+            var img = document.createElement('img');
+            img.src = src;
+            trackM.appendChild(img);
+        });
+        trackM.style.transform = 'translateX(0)';
+
+        // Mobile dots
+        var dotsM = document.getElementById('prodDotsM');
+        dotsM.innerHTML = '';
+        if (photos.length > 1) {
+            photos.forEach(function(_, i) {
+                var d = document.createElement('div');
+                d.style.cssText = 'width:6px;height:6px;border-radius:50%;background:' + (i===0 ? 'var(--black)' : 'rgba(42,40,37,0.25)') + ';transition:background 0.2s;cursor:pointer;';
+                d.onclick = function() { _prodIndex = i; updateProdGallery(); };
+                dotsM.appendChild(d);
+            });
+        }
+
+        // Touch swipe on mobile gallery
+        var startX = null;
+        trackM.ontouchstart = function(e){ startX = e.touches[0].clientX; };
+        trackM.ontouchend = function(e){
+            if (startX === null) return;
+            var dx = e.changedTouches[0].clientX - startX;
+            if (Math.abs(dx) > 40) prodSlide(dx < 0 ? 1 : -1);
+            startX = null;
+        };
+
+        // Sizes
+        var container = document.getElementById('prodSizeBtns');
+        container.innerHTML = '';
+        variants.forEach(function(v) {
+            if (v.a) {
+                var a = document.createElement('a');
+                a.href = 'https://zniyxu-1a.myshopify.com/cart/' + v.id + ':1';
+                a.target = '_blank';
+                a.textContent = v.s;
+                a.style.cssText = 'display:inline-flex;align-items:center;justify-content:center;min-width:52px;padding:11px 16px;border:1px solid rgba(42,40,37,0.7);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:\'DM Sans\',sans-serif;color:var(--black);text-decoration:none;transition:background 0.2s,color 0.2s;cursor:pointer;';
+                a.onmouseenter = function(){this.style.background='var(--black)';this.style.color='#fff';};
+                a.onmouseleave = function(){this.style.background='';this.style.color='var(--black)';};
+                container.appendChild(a);
+            } else if (v.s) {
+                var btn = document.createElement('button');
+                btn.textContent = v.s;
+                btn.style.cssText = 'display:inline-flex;align-items:center;justify-content:center;min-width:52px;padding:11px 16px;border:1px solid rgba(42,40,37,0.15);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:\'DM Sans\',sans-serif;color:rgba(42,40,37,0.3);text-decoration:line-through;cursor:pointer;background:transparent;transition:border-color 0.2s,color 0.2s;';
+                btn.onmouseenter = function(){this.style.borderColor='rgba(42,40,37,0.35)';this.style.color='rgba(42,40,37,0.5)';};
+                btn.onmouseleave = function(){this.style.borderColor='rgba(42,40,37,0.15)';this.style.color='rgba(42,40,37,0.3)';};
+                (function(sz, nm){ btn.onclick = function() { showProdNotify(nm, sz); }; })(v.s, name);
+                container.appendChild(btn);
+            }
+        });
+
+        showProdSizes();
+        // Reset scroll
+        document.getElementById('prodPhotosCol').scrollTop = 0;
+        document.getElementById('prodInfoCol').scrollTop = 0;
+        document.getElementById('prodInner').scrollTop = 0;
+        document.getElementById('prodOverlay').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function updateProdGallery() {
+        document.getElementById('prodTrackM').style.transform = 'translateX(-' + (_prodIndex * 100) + '%)';
+        var dots = document.getElementById('prodDotsM').children;
+        for (var i = 0; i < dots.length; i++) {
+            dots[i].style.background = i === _prodIndex ? 'var(--black)' : 'rgba(42,40,37,0.25)';
+        }
+    }
+
+    function prodSlide(dir) {
+        _prodIndex = (_prodIndex + dir + _prodPhotos.length) % _prodPhotos.length;
+        updateProdGallery();
+    }
+
+    function showProdSizes() {
+        document.getElementById('prodSizeView').style.display = '';
+        document.getElementById('prodNotifyView').style.display = 'none';
+    }
+
+    function showProdNotify(product, size) {
+        document.getElementById('prodNotifyLabel').textContent = 'Leave your email and we\'ll notify you when size ' + size + ' of ' + product + ' is back.';
+        document.getElementById('prodNotifySuccess').style.display = 'none';
+        document.getElementById('prodNotifyForm').style.display = '';
+        document.getElementById('pnEmail').value = '';
+        document.getElementById('pnIg').value = '';
+        document.getElementById('prodSizeView').style.display = 'none';
+        document.getElementById('prodNotifyView').style.display = '';
+        setTimeout(function(){ document.getElementById('pnEmail').focus(); }, 100);
+        document.getElementById('prodNotifyForm').onsubmit = function(e) {
+            e.preventDefault();
+            var email = document.getElementById('pnEmail').value.trim();
+            var ig = document.getElementById('pnIg').value.trim();
+            if (!email) return;
+            fetch(SCRIPT_URL, {
+                method:'POST', headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({email:email, instagram:ig, product: product + ' · Size ' + size})
+            });
+            document.getElementById('prodNotifyForm').style.display = 'none';
+            document.getElementById('prodNotifySuccess').style.display = '';
+        };
+    }
+
+    function closeSizeModal() {
+        document.getElementById('prodOverlay').style.display = 'none';
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSizeModal(); });
+
+    document.getElementById('overlay').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    document.getElementById('theForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const nameEl  = document.getElementById('nameInput');
+        const emailEl = document.getElementById('emailInput');
+        const igEl    = document.getElementById('igInput');
+        const btn     = document.getElementById('submitBtn');
+        nameEl.classList.remove('error');
+        emailEl.classList.remove('error');
+        const name  = nameEl.value.trim();
+        const email = emailEl.value.trim();
+        const ig    = igEl.value.trim();
+        let valid = true;
+        if (!name)  { nameEl.classList.add('error'); nameEl.focus(); valid = false; }
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            emailEl.classList.add('error'); if (valid) emailEl.focus(); valid = false;
+        }
+        if (!valid) return;
+        btn.disabled = true; btn.textContent = 'Sending...';
+        try {
+            await fetch(SCRIPT_URL, {
+                method: 'POST', mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, instagram: ig, timestamp: new Date().toISOString(), source: notifyProduct ? 'restock-notify' : 'leplanb-optin', product: notifyProduct || '' })
+            });
+        } catch (_) {}
+        notifyProduct = '';
+        document.getElementById('formView').style.display    = 'none';
+        document.getElementById('successView').style.display = 'block';
+        setTimeout(() => {
+            closeModal();
+            setTimeout(() => {
+                document.getElementById('formView').style.display    = 'block';
+                document.getElementById('successView').style.display = 'none';
+                document.getElementById('theForm').reset();
+                btn.disabled = false;
+                btn.textContent = 'Get Early Access →';
+            }, 400);
+        }, 3000);
+    });
+</script>
+<script>
+// Bikini card clickable (image + name area opens product overlay)
+document.querySelectorAll('.pcard').forEach(function(card) {
+    var buyBtn = card.querySelector('.bk-buy-btn');
+    if (!buyBtn) return;
+    var imgArea = card.querySelector('.pcard-img');
+    var nameArea = card.querySelector('.pcard-name');
+    [imgArea, nameArea].forEach(function(el) {
+        if (!el) return;
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', function(e) {
+            if (e.target.closest('.bk-notify-link')) return;
+            buyBtn.click();
+        });
+    });
+});
+
+// Lightbox
+(function(){
+    var box = document.createElement('div');
+    box.id = 'lbBox';
+    box.style.cssText = 'display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,0.92);cursor:zoom-out;align-items:center;justify-content:center;';
+    var img = document.createElement('img');
+    img.style.cssText = 'max-width:92vw;max-height:92vh;object-fit:contain;box-shadow:0 8px 60px rgba(0,0,0,0.6);pointer-events:none;';
+    box.appendChild(img);
+    box.onclick = function(){ box.style.display='none'; document.body.style.overflow=''; };
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ box.style.display='none'; document.body.style.overflow=''; }});
+    document.body.appendChild(box);
+
+    document.querySelectorAll('.lb-card img').forEach(function(el){
+        el.style.cursor = 'zoom-in';
+        el.addEventListener('click', function(e){
+            e.stopPropagation();
+            img.src = el.src;
+            box.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+})();
+</script>
+</body>
+</html>

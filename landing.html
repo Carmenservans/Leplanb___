@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Plan B — SS26 · Ericeira</title>
+    <meta name="description" content="For people off scripts. SS26 Collection — Ericeira, Portugal. Activewear built for the ones who chose this life.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+        --sand:   #EDE6DA;
+        --cream:  #F7F3EE;
+        --black:  #151210;
+        --rust:   #C05A28;
+        --mauve:  #5A3C3C;
+        --blue:   #7699B8;
+        --gray:   #8A8176;
+        --light:  #F2EDE5;
+        --wa:     #25D366;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'DM Sans', sans-serif;
+        background: var(--sand);
+        color: var(--black);
+        overflow-x: hidden;
+    }
+
+    /* ─── GRAIN OVERLAY (analog feel) ─── */
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1000;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+        opacity: 0.028;
+        mix-blend-mode: multiply;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 500;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 22px 60px;
+        transition: background 0.4s ease, padding 0.3s ease;
+    }
+    nav.scrolled {
+        background: rgba(237, 230, 218, 0.97);
+        backdrop-filter: blur(12px);
+        padding: 16px 60px;
+        border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .nav-logo {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 22px;
+        letter-spacing: 5px;
+        color: var(--black);
+        text-decoration: none;
+    }
+    .nav-logo.light { color: #fff; }
+
+    .nav-links {
+        display: flex;
+        gap: 40px;
+        list-style: none;
+    }
+    .nav-links a {
+        font-size: 10.5px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: rgba(255,255,255,0.85);
+        font-weight: 400;
+        transition: opacity 0.2s;
+    }
+    nav.scrolled .nav-links a { color: var(--black); }
+    .nav-links a:hover { opacity: 0.5; }
+
+    .nav-cta {
+        font-size: 10.5px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+        border: 1px solid rgba(255,255,255,0.6);
+        padding: 9px 22px;
+        transition: all 0.3s ease;
+    }
+    nav.scrolled .nav-cta {
+        color: var(--black);
+        border-color: var(--black);
+    }
+    .nav-cta:hover {
+        background: var(--rust);
+        border-color: var(--rust);
+        color: #fff !important;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+        position: relative;
+        height: 100vh;
+        min-height: 640px;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+        padding: 0 60px 72px;
+    }
+
+    .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+    }
+    .hero-bg img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        object-position: center 20%;
+        filter: contrast(1.08) saturate(0.75);
+    }
+    .hero-bg::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to bottom,
+            rgba(10,8,6,0.25) 0%,
+            rgba(10,8,6,0.1) 40%,
+            rgba(10,8,6,0.55) 100%
+        );
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        gap: 0;
+        align-items: flex-end;
+    }
+
+    .hero-headline {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(80px, 11vw, 152px);
+        line-height: 0.92;
+        color: #fff;
+        letter-spacing: 2px;
+    }
+    .hero-headline em {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 0.88em;
+        letter-spacing: 1px;
+    }
+
+    .hero-right-col {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 28px;
+        padding-bottom: 6px;
+    }
+
+    .hero-label {
+        font-size: 10px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.6);
+        text-align: right;
+    }
+
+    .hero-sub {
+        font-size: 13px;
+        line-height: 1.75;
+        color: rgba(255,255,255,0.65);
+        font-weight: 300;
+        max-width: 300px;
+        text-align: right;
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: #fff;
+        color: var(--black);
+        padding: 14px 32px;
+        font-size: 10.5px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 500;
+        font-family: 'DM Sans', sans-serif;
+        transition: all 0.3s ease;
+    }
+    .btn-primary:hover { background: var(--rust); color: #fff; }
+
+    .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: transparent;
+        color: #fff;
+        padding: 13px 32px;
+        font-size: 10.5px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 500;
+        font-family: 'DM Sans', sans-serif;
+        border: 1px solid rgba(255,255,255,0.55);
+        transition: all 0.3s ease;
+    }
+    .btn-outline:hover { background: #fff; color: var(--black); }
+
+    .hero-scroll {
+        position: absolute;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        color: rgba(255,255,255,0.45);
+        font-size: 9px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+    .hero-scroll-line {
+        width: 1px;
+        height: 44px;
+        background: rgba(255,255,255,0.35);
+        animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+        0%, 100% { transform: scaleY(1); opacity: 0.4; }
+        50% { transform: scaleY(0.5); opacity: 1; }
+    }
+
+    .hero-ss26 {
+        position: absolute;
+        top: 100px;
+        left: 60px;
+        z-index: 2;
+        font-size: 9.5px;
+        letter-spacing: 3.5px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.5);
+    }
+
+    /* ─── MARQUEE ─── */
+    .marquee {
+        background: var(--black);
+        padding: 15px 0;
+        overflow: hidden;
+    }
+    .marquee-track {
+        display: inline-flex;
+        animation: ticker 28s linear infinite;
+        width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .m { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.75); padding: 0 36px; white-space: nowrap; }
+    .m-sep { color: var(--rust); padding: 0 4px; font-size: 16px; line-height: 1; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SECTION HELPERS ─── */
+    .section { padding: 100px 60px; }
+
+    .eyebrow {
+        font-size: 9.5px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gray);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+    .eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gray); flex-shrink: 0; }
+    .eyebrow.center { justify-content: center; }
+    .eyebrow.center::before { display: none; }
+
+    .display {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(44px, 5vw, 68px);
+        line-height: 0.95;
+        letter-spacing: 1px;
+        color: var(--black);
+    }
+    .display em {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 0.9em;
+    }
+
+    /* ─── COLLECTION ─── */
+    .collection { background: var(--cream); }
+
+    .collection-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 52px;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+    }
+
+    .product-card { position: relative; overflow: hidden; cursor: pointer; }
+    .product-card:first-child { grid-column: span 1; }
+
+    .product-img {
+        position: relative;
+        aspect-ratio: 3/4;
+        overflow: hidden;
+        background: var(--sand);
+    }
+    .product-img img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        transition: transform 0.7s ease;
+        filter: contrast(1.05);
+    }
+    .product-card:hover .product-img img { transform: scale(1.06); }
+
+    .product-tag {
+        position: absolute;
+        top: 16px; left: 16px;
+        background: var(--black);
+        color: #fff;
+        padding: 4px 12px;
+        font-size: 8.5px;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        font-weight: 500;
+        z-index: 2;
+    }
+
+    .product-overlay {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        background: rgba(21,18,16,0.88);
+        padding: 24px 22px 22px;
+        transform: translateY(100%);
+        transition: transform 0.32s ease;
+        z-index: 3;
+    }
+    .product-card:hover .product-overlay { transform: translateY(0); }
+
+    .product-overlay-name {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 20px;
+        font-weight: 300;
+        font-style: italic;
+        color: #fff;
+        margin-bottom: 12px;
+    }
+    .product-overlay-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 9.5px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--rust);
+        font-weight: 500;
+        text-decoration: none;
+        cursor: pointer;
+        background: none;
+        border: none;
+        font-family: 'DM Sans', sans-serif;
+        padding: 0;
+    }
+    .product-overlay-cta:hover { color: #fff; }
+
+    .product-info {
+        padding: 18px 4px 0;
+    }
+    .product-name {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 19px;
+        font-weight: 400;
+        margin-bottom: 5px;
+        letter-spacing: 0.3px;
+    }
+    .product-meta {
+        font-size: 11px;
+        color: var(--gray);
+        font-weight: 300;
+        letter-spacing: 0.3px;
+    }
+
+    /* ─── MANIFESTO ─── */
+    .manifesto {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 680px;
+    }
+    .manifesto-img { position: relative; overflow: hidden; }
+    .manifesto-img img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: contrast(1.05) saturate(0.8);
+        transition: transform 0.8s ease;
+    }
+    .manifesto-img:hover img { transform: scale(1.04); }
+
+    .manifesto-content {
+        background: var(--black);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 88px 80px;
+        color: #fff;
+    }
+    .manifesto-content .eyebrow { color: rgba(255,255,255,0.35); }
+    .manifesto-content .eyebrow::before { background: rgba(255,255,255,0.25); }
+    .manifesto-content .display { color: #fff; margin-bottom: 32px; }
+
+    .manifesto-text {
+        font-size: 14px;
+        line-height: 1.9;
+        color: rgba(255,255,255,0.5);
+        font-weight: 300;
+        max-width: 380px;
+        margin-bottom: 16px;
+    }
+    .manifesto-text strong {
+        color: rgba(255,255,255,0.85);
+        font-weight: 400;
+    }
+
+    .btn-rust {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: var(--rust);
+        color: #fff;
+        padding: 14px 32px;
+        font-size: 10.5px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 500;
+        font-family: 'DM Sans', sans-serif;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        align-self: flex-start;
+        margin-top: 20px;
+    }
+    .btn-rust:hover { background: #a34a1f; }
+
+    /* ─── LOOKBOOK ─── */
+    .lookbook-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 4px;
+        height: 680px;
+    }
+    .lb { position: relative; overflow: hidden; background: var(--sand); }
+    .lb.tall { grid-row: span 2; }
+    .lb img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        transition: transform 0.65s ease;
+    }
+    .lb:hover img { transform: scale(1.06); }
+    .lb-cap {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        padding: 32px 18px 16px;
+        background: linear-gradient(transparent, rgba(10,8,6,0.65));
+        color: rgba(255,255,255,0.7);
+        font-size: 9.5px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 400;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .lb:hover .lb-cap { opacity: 1; }
+
+    /* B&W filter for some shots */
+    .lb.bw img { filter: grayscale(100%) contrast(1.1); }
+    .lb.warm img { filter: sepia(30%) contrast(1.05) saturate(0.85); }
+
+    /* ─── VIDEO / GIF SECTION ─── */
+    .video-section {
+        position: relative;
+        background: var(--black);
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 560px;
+    }
+
+    .video-wrap {
+        position: relative;
+        overflow: hidden;
+    }
+    .video-wrap video,
+    .video-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    .video-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(10,8,6,0.15);
+    }
+
+    .video-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 72px 72px;
+        color: #fff;
+    }
+    .video-content .eyebrow { color: rgba(255,255,255,0.35); }
+    .video-content .eyebrow::before { background: rgba(255,255,255,0.2); }
+    .video-content .display { color: #fff; margin-bottom: 24px; }
+    .video-sub {
+        font-size: 14px;
+        line-height: 1.85;
+        color: rgba(255,255,255,0.45);
+        font-weight: 300;
+        max-width: 340px;
+        font-style: italic;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 18px;
+    }
+
+    /* ─── WAITLIST ─── */
+    .waitlist-section {
+        background: var(--rust);
+        padding: 88px 60px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .waitlist-section::before {
+        content: 'SS26';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 320px;
+        color: rgba(255,255,255,0.05);
+        pointer-events: none;
+        white-space: nowrap;
+        letter-spacing: 20px;
+    }
+
+    .waitlist-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(52px, 7vw, 96px);
+        color: #fff;
+        line-height: 0.92;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 2;
+    }
+    .waitlist-title em {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 0.88em;
+    }
+
+    .waitlist-sub {
+        font-size: 14px;
+        color: rgba(255,255,255,0.65);
+        font-weight: 300;
+        max-width: 440px;
+        margin: 0 auto 44px;
+        line-height: 1.8;
+        position: relative;
+        z-index: 2;
+    }
+
+    .waitlist-form {
+        display: flex;
+        max-width: 480px;
+        margin: 0 auto 20px;
+        gap: 0;
+        position: relative;
+        z-index: 2;
+    }
+    .waitlist-form input {
+        flex: 1;
+        padding: 16px 22px;
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.35);
+        border-right: none;
+        color: #fff;
+        font-size: 13px;
+        font-family: 'DM Sans', sans-serif;
+        outline: none;
+        transition: background 0.2s;
+    }
+    .waitlist-form input::placeholder { color: rgba(255,255,255,0.4); }
+    .waitlist-form input:focus { background: rgba(255,255,255,0.18); }
+    .waitlist-form button {
+        padding: 16px 28px;
+        background: var(--black);
+        color: #fff;
+        border: none;
+        font-size: 10.5px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-family: 'DM Sans', sans-serif;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        white-space: nowrap;
+    }
+    .waitlist-form button:hover { background: #2a1f18; }
+
+    .waitlist-or {
+        font-size: 10.5px;
+        color: rgba(255,255,255,0.4);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .btn-wa {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--wa);
+        color: #fff;
+        padding: 14px 32px;
+        font-size: 10.5px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 500;
+        font-family: 'DM Sans', sans-serif;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 2;
+    }
+    .btn-wa:hover { background: #20BA59; transform: translateY(-2px); }
+
+    /* ─── INSTAGRAM ─── */
+    .ig-section { padding: 80px 60px; text-align: center; background: var(--cream); }
+    .ig-section .eyebrow { justify-content: center; }
+    .ig-section .eyebrow::before { display: none; }
+
+    .ig-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 4px;
+        margin: 44px 0 32px;
+    }
+    .ig-item { aspect-ratio: 1; overflow: hidden; position: relative; cursor: pointer; }
+    .ig-item img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        transition: transform 0.55s ease;
+        filter: contrast(1.03);
+    }
+    .ig-item:hover img { transform: scale(1.08); }
+    .ig-hover {
+        position: absolute; inset: 0;
+        background: rgba(21,18,16,0.45);
+        display: flex; align-items: center; justify-content: center;
+        opacity: 0; transition: opacity 0.3s;
+    }
+    .ig-item:hover .ig-hover { opacity: 1; }
+    .ig-handle {
+        color: #fff;
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+    .ig-follow {
+        font-size: 10.5px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--black);
+        font-weight: 500;
+        border-bottom: 1px solid var(--black);
+        padding-bottom: 2px;
+        transition: opacity 0.2s;
+    }
+    .ig-follow:hover { opacity: 0.5; }
+
+    /* ─── FLOATING WA ─── */
+    .fab {
+        position: fixed;
+        bottom: 30px; right: 30px;
+        z-index: 499;
+        width: 54px; height: 54px;
+        border-radius: 50%;
+        background: var(--wa);
+        display: flex; align-items: center; justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+        transition: all 0.3s ease;
+    }
+    .fab:hover { transform: scale(1.1); box-shadow: 0 8px 28px rgba(37,211,102,0.48); }
+    .fab svg { width: 24px; height: 24px; fill: #fff; }
+
+    /* ─── FOOTER ─── */
+    footer {
+        background: var(--black);
+        color: rgba(255,255,255,0.45);
+        padding: 60px;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 60px;
+    }
+    .f-logo {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 20px;
+        letter-spacing: 5px;
+        color: #fff;
+        display: block;
+        margin-bottom: 16px;
+    }
+    .f-tagline {
+        font-size: 12px;
+        line-height: 1.85;
+        color: rgba(255,255,255,0.35);
+        font-weight: 300;
+        max-width: 200px;
+        margin-bottom: 24px;
+        font-style: italic;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 16px;
+    }
+    .f-social { display: flex; gap: 18px; }
+    .f-social a {
+        font-size: 9.5px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.45);
+        text-decoration: none;
+        transition: color 0.2s;
+        font-weight: 400;
+    }
+    .f-social a:hover { color: #fff; }
+
+    .f-col h4 {
+        font-size: 9.5px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.65);
+        font-weight: 500;
+        margin-bottom: 22px;
+    }
+    .f-col ul { list-style: none; }
+    .f-col ul li { margin-bottom: 12px; }
+    .f-col ul li a {
+        font-size: 12.5px;
+        color: rgba(255,255,255,0.35);
+        text-decoration: none;
+        font-weight: 300;
+        transition: color 0.2s;
+    }
+    .f-col ul li a:hover { color: rgba(255,255,255,0.85); }
+
+    .f-bottom {
+        background: #0D0B09;
+        padding: 18px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 10px;
+        color: rgba(255,255,255,0.22);
+        letter-spacing: 1px;
+    }
+
+    /* ─── WA SVG INLINE ─── */
+    .wa-ico { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+
+    /* ─── WAITLIST MODAL ─── */
+    .modal-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(21,18,16,0.85);
+        z-index: 800;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(4px);
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+        background: var(--cream);
+        max-width: 460px;
+        width: 90%;
+        padding: 56px 48px;
+        position: relative;
+    }
+    .modal-close {
+        position: absolute;
+        top: 20px; right: 24px;
+        background: none;
+        border: none;
+        font-size: 22px;
+        cursor: pointer;
+        color: var(--gray);
+        line-height: 1;
+    }
+    .modal .eyebrow { margin-bottom: 12px; }
+    .modal .display { font-size: 44px; margin-bottom: 18px; }
+    .modal-sub {
+        font-size: 13px;
+        color: var(--gray);
+        line-height: 1.75;
+        font-weight: 300;
+        margin-bottom: 28px;
+    }
+    .modal-form { display: flex; flex-direction: column; gap: 12px; }
+    .modal-form input {
+        padding: 14px 18px;
+        border: 1px solid rgba(0,0,0,0.15);
+        background: #fff;
+        font-size: 13px;
+        font-family: 'DM Sans', sans-serif;
+        outline: none;
+        color: var(--black);
+        transition: border-color 0.2s;
+    }
+    .modal-form input:focus { border-color: var(--rust); }
+    .modal-form input::placeholder { color: var(--gray); }
+    .modal-form button {
+        padding: 15px;
+        background: var(--black);
+        color: #fff;
+        border: none;
+        font-size: 10.5px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-family: 'DM Sans', sans-serif;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .modal-form button:hover { background: var(--rust); }
+    .modal-disclaimer {
+        font-size: 10px;
+        color: var(--gray);
+        margin-top: 12px;
+        line-height: 1.6;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1100px) {
+        nav { padding: 18px 32px; }
+        nav.scrolled { padding: 14px 32px; }
+        .hero { padding: 0 32px 60px; }
+        .hero-ss26 { left: 32px; }
+        .hero-headline { font-size: clamp(64px, 10vw, 110px); }
+        .section { padding: 80px 32px; }
+        .products-grid { grid-template-columns: 1fr 1fr; }
+        .products-grid .product-card:last-child { display: none; }
+        .manifesto { grid-template-columns: 1fr; }
+        .manifesto-img { height: 52vw; }
+        .manifesto-content { padding: 64px 44px; }
+        .lookbook-grid { height: 480px; }
+        .video-section { grid-template-columns: 1fr; }
+        .video-wrap { height: 52vw; }
+        .video-content { padding: 56px 44px; }
+        footer { grid-template-columns: 1fr 1fr; gap: 40px; padding: 48px 32px; }
+        .f-bottom { padding: 18px 32px; }
+        .ig-grid { grid-template-columns: repeat(3,1fr); }
+        .ig-section { padding: 64px 32px; }
+        .waitlist-section { padding: 72px 32px; }
+    }
+
+    @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .hero { padding: 0 24px 52px; }
+        .hero-ss26 { left: 24px; top: 88px; }
+        .hero-content { grid-template-columns: 1fr; gap: 28px; }
+        .hero-right-col { align-items: flex-start; }
+        .hero-sub { text-align: left; }
+        .hero-actions { justify-content: flex-start; }
+        .section { padding: 64px 24px; }
+        .products-grid { grid-template-columns: 1fr; gap: 4px; }
+        .products-grid .product-card:last-child { display: block; }
+        .lookbook-grid {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            height: auto;
+        }
+        .lb.tall { grid-row: span 1; aspect-ratio: 3/4; }
+        .lb { aspect-ratio: 3/4; }
+        .collection-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+        .waitlist-form { flex-direction: column; }
+        .waitlist-form input { border-right: 1px solid rgba(255,255,255,0.35); border-bottom: none; }
+        .waitlist-section::before { font-size: 160px; }
+        footer { grid-template-columns: 1fr; }
+        .f-bottom { flex-direction: column; gap: 8px; text-align: center; }
+        .ig-grid { grid-template-columns: repeat(2,1fr); }
+        .modal { padding: 44px 28px; }
+    }
+    </style>
+</head>
+<body>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/TUNUMERO?text=Hi!%20I'd%20love%20to%20know%20more%20about%20Le%20Plan%20B%20SS26%20🖤" target="_blank" class="fab" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<!-- WAITLIST MODAL -->
+<div class="modal-backdrop" id="modal">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <p class="eyebrow">SS26 — Ericeira</p>
+        <h2 class="display">Be first.</h2>
+        <p class="modal-sub">The collection drops soon. Leave your email and you'll be the first to know — and the first to shop.</p>
+        <form class="modal-form" onsubmit="handleWaitlist(event)">
+            <input type="text" placeholder="Your name" required>
+            <input type="email" placeholder="Your email" required>
+            <button type="submit">Join the Waitlist →</button>
+        </form>
+        <p class="modal-disclaimer">No spam. Ever. Just the drop, when it's ready.</p>
+    </div>
+</div>
+
+<!-- ═══════════ NAV -->
+<nav id="nav">
+    <a href="#" class="nav-logo" id="navLogo">Le Plan B</a>
+    <ul class="nav-links">
+        <li><a href="#collection">Collection</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#lookbook">Lookbook</a></li>
+    </ul>
+    <a href="#" class="nav-cta" onclick="openModal(); return false;">Join Waitlist</a>
+</nav>
+
+<!-- ═══════════ HERO -->
+<section class="hero">
+    <div class="hero-bg">
+        <img src="img/DSC03896.jpg" alt="Le Plan B SS26" loading="eager">
+    </div>
+    <span class="hero-ss26">Le Plan B &nbsp;·&nbsp; SS26 &nbsp;·&nbsp; Ericeira, Portugal</span>
+    <div class="hero-content">
+        <div>
+            <h1 class="hero-headline">
+                For people<br><em>off scripts.</em>
+            </h1>
+        </div>
+        <div class="hero-right-col">
+            <p class="hero-label">SS26 Collection &nbsp;·&nbsp; Coming Soon</p>
+            <p class="hero-sub">Not a comeback. Not a campaign. Built for the ones who chose this life before it was a trend.</p>
+            <div class="hero-actions">
+                <a href="#collection" class="btn-primary">View Collection</a>
+                <a href="#" class="btn-outline" onclick="openModal(); return false;">Join Waitlist</a>
+            </div>
+        </div>
+    </div>
+    <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<!-- ═══════════ MARQUEE -->
+<div class="marquee">
+    <div class="marquee-track">
+        <span class="m">Ericeira</span><span class="m-sep">·</span>
+        <span class="m">SS26</span><span class="m-sep">·</span>
+        <span class="m">Polka Dots</span><span class="m-sep">·</span>
+        <span class="m">For People Off Scripts</span><span class="m-sep">·</span>
+        <span class="m">Memories Not A Campaign</span><span class="m-sep">·</span>
+        <span class="m">Bloodline</span><span class="m-sep">·</span>
+        <span class="m">Girls Only</span><span class="m-sep">·</span>
+        <span class="m">Born in Ericeira</span><span class="m-sep">·</span>
+        <!-- repeat for seamless loop -->
+        <span class="m">Ericeira</span><span class="m-sep">·</span>
+        <span class="m">SS26</span><span class="m-sep">·</span>
+        <span class="m">Polka Dots</span><span class="m-sep">·</span>
+        <span class="m">For People Off Scripts</span><span class="m-sep">·</span>
+        <span class="m">Memories Not A Campaign</span><span class="m-sep">·</span>
+        <span class="m">Bloodline</span><span class="m-sep">·</span>
+        <span class="m">Girls Only</span><span class="m-sep">·</span>
+        <span class="m">Born in Ericeira</span><span class="m-sep">·</span>
+    </div>
+</div>
+
+<!-- ═══════════ COLLECTION -->
+<section class="section collection" id="collection">
+    <div class="collection-header">
+        <div>
+            <p class="eyebrow">SS26 Collection</p>
+            <h2 class="display">The drop.</h2>
+        </div>
+        <a href="#" onclick="openModal(); return false;" style="font-size:10.5px; letter-spacing:2px; text-transform:uppercase; text-decoration:none; color:var(--black); font-weight:500; border-bottom:1px solid var(--black); padding-bottom:2px;">Get notified →</a>
+    </div>
+
+    <div class="products-grid">
+        <!-- 1 -->
+        <div class="product-card">
+            <div class="product-img">
+                <span class="product-tag">SS26</span>
+                <img src="img/DSC04316.jpg" alt="Polka Dots Full Set">
+                <div class="product-overlay">
+                    <p class="product-overlay-name">Polka Dots Set</p>
+                    <button class="product-overlay-cta" onclick="openModal()">
+                        ↗ Get notified at launch
+                    </button>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Polka Dots Set</h3>
+                <p class="product-meta">Crop bra + high-waist shorts &nbsp;·&nbsp; XS – XL</p>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="product-card">
+            <div class="product-img">
+                <span class="product-tag">Hero Piece</span>
+                <img src="img/DSC03774.jpg" alt="Polka Dots Shorts">
+                <div class="product-overlay">
+                    <p class="product-overlay-name">Polka Dots Shorts</p>
+                    <button class="product-overlay-cta" onclick="openModal()">
+                        ↗ Get notified at launch
+                    </button>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Polka Dots Shorts</h3>
+                <p class="product-meta">High-waist biker short &nbsp;·&nbsp; XS – XL</p>
+            </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="product-card">
+            <div class="product-img">
+                <img src="img/DSC04143.jpg" alt="Espresso Set">
+                <div class="product-overlay">
+                    <p class="product-overlay-name">Espresso Set</p>
+                    <button class="product-overlay-cta" onclick="openModal()">
+                        ↗ Get notified at launch
+                    </button>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">Espresso Set</h3>
+                <p class="product-meta">Raglan top + capris &nbsp;·&nbsp; XS – XL</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ MANIFESTO -->
+<section class="manifesto" id="about">
+    <div class="manifesto-img">
+        <img src="img/DSC03838.jpg" alt="Le Plan B — Ericeira">
+    </div>
+    <div class="manifesto-content">
+        <p class="eyebrow">Built in Ericeira</p>
+        <h2 class="display">Not a<br><em>comeback.</em></h2>
+        <p class="manifesto-text"><strong>"The culture didn't die. It was sold."</strong></p>
+        <p class="manifesto-text">Kelly at Pipeline. Lisa Andersen on the cover of Surfer. Girls running into the water. Salt. Freedom. That era is over. The feeling isn't.</p>
+        <p class="manifesto-text">We are not here to bring it back. We are here to build what comes next — same rawness, same energy. Born in 2026, shot on analog and digicam, in a village that chose the ocean over the office.</p>
+        <button class="btn-rust" onclick="openModal()">Join the inner circle</button>
+    </div>
+</section>
+
+<!-- ═══════════ LOOKBOOK -->
+<section style="padding: 0;" id="lookbook">
+    <div style="padding: 80px 60px 40px;">
+        <p class="eyebrow">Lookbook</p>
+        <h2 class="display">In motion.</h2>
+    </div>
+    <div class="lookbook-grid">
+        <!-- Tall left: the peach shot — most editorial, stops the scroll -->
+        <div class="lb tall warm">
+            <img src="img/DSC04304.jpg" alt="SS26 — Off Scripts" style="object-position: center 25%;">
+            <span class="lb-cap">Off Scripts · SS26</span>
+        </div>
+        <!-- Top row right two -->
+        <div class="lb bw">
+            <img src="img/DSC04005.jpg" alt="Car · Paparazzi Energy" style="object-position: center 15%;">
+            <span class="lb-cap">Paparazzi Energy · SS26</span>
+        </div>
+        <div class="lb warm">
+            <img src="img/DSC04316.jpg" alt="Two girls · Ericeira" style="object-position: center top;">
+            <span class="lb-cap">Polka Dots Set · SS26</span>
+        </div>
+        <!-- Bottom row right two -->
+        <div class="lb">
+            <img src="img/DSC04204.jpg" alt="Girl in car · Bloodline" style="object-position: center 25%;">
+            <span class="lb-cap">Bloodline · SS26</span>
+        </div>
+        <div class="lb warm">
+            <img src="img/DSC03444.jpg" alt="Polka Dots Shorts · Skate" style="object-position: center top;">
+            <span class="lb-cap">Polka Dots Shorts · Ericeira</span>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ VIDEO / GIF -->
+<section class="video-section">
+    <div class="video-wrap">
+        <video autoplay muted loop playsinline poster="img/DSC03896.jpg">
+            <source src="WhatsApp Video 2026-06-07 at 21.14.56.mp4" type="video/mp4">
+            <img src="img/campaign.gif" alt="Le Plan B Campaign">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+    <div class="video-content">
+        <p class="eyebrow">Memories. not a campaign.</p>
+        <h2 class="display">This is<br><em>not a shoot.</em></h2>
+        <p class="video-sub">"This shouldn't feel like a fashion campaign. It should feel like a summer people don't fully get over."</p>
+    </div>
+</section>
+
+<!-- ═══════════ WAITLIST -->
+<section class="waitlist-section" id="waitlist">
+    <p style="font-size:9.5px; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:18px; position:relative; z-index:2;">SS26 — Dropping Soon</p>
+    <h2 class="waitlist-title">Be<br><em>first.</em></h2>
+    <p class="waitlist-sub">The collection drops soon. Leave your email and you'll be the first to know — and the first to shop.</p>
+    <form class="waitlist-form" onsubmit="handleWaitlist(event)">
+        <input type="email" placeholder="your@email.com" required>
+        <button type="submit">Join ↗</button>
+    </form>
+    <p class="waitlist-or">— or —</p>
+    <a href="https://wa.me/TUNUMERO?text=Hi!%20I%20want%20early%20access%20to%20Le%20Plan%20B%20SS26%20🖤" target="_blank" class="btn-wa">
+        <svg class="wa-ico" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        DM us on WhatsApp
+    </a>
+</section>
+
+<!-- ═══════════ INSTAGRAM -->
+<section class="ig-section">
+    <p class="eyebrow center">Follow the girls</p>
+    <h2 class="display" style="text-align:center; margin-bottom:6px;">@leplanb___</h2>
+    <p style="font-size:12px; color:var(--gray); font-weight:300; text-align:center;">Ericeira · SS26 · Off Scripts</p>
+
+    <div class="ig-grid">
+        <!-- 5 strongest shots for IG grid -->
+        <a href="https://www.instagram.com/leplanb___/" target="_blank" class="ig-item">
+            <img src="img/DSC03896.jpg" alt="IG" style="object-position: center 20%;">
+            <div class="ig-hover"><span class="ig-handle">@leplanb___</span></div>
+        </a>
+        <a href="https://www.instagram.com/leplanb___/" target="_blank" class="ig-item">
+            <img src="img/DSC03891.jpg" alt="IG" style="filter:grayscale(100%) contrast(1.1);">
+            <div class="ig-hover"><span class="ig-handle">@leplanb___</span></div>
+        </a>
+        <a href="https://www.instagram.com/leplanb___/" target="_blank" class="ig-item">
+            <img src="img/DSC03809.jpg" alt="IG" style="object-position: center top;">
+            <div class="ig-hover"><span class="ig-handle">@leplanb___</span></div>
+        </a>
+        <a href="https://www.instagram.com/leplanb___/" target="_blank" class="ig-item">
+            <img src="img/DSC03621-2.jpg" alt="IG">
+            <div class="ig-hover"><span class="ig-handle">@leplanb___</span></div>
+        </a>
+        <a href="https://www.instagram.com/leplanb___/" target="_blank" class="ig-item">
+            <img src="img/DSC04316.jpg" alt="IG" style="object-position: center top;">
+            <div class="ig-hover"><span class="ig-handle">@leplanb___</span></div>
+        </a>
+    </div>
+    <a href="https://www.instagram.com/leplanb___/" target="_blank" class="ig-follow">Follow on Instagram →</a>
+</section>
+
+<!-- ═══════════ FOOTER -->
+<footer>
+    <div>
+        <span class="f-logo">Le Plan B</span>
+        <p class="f-tagline">"For people off scripts."</p>
+        <div class="f-social">
+            <a href="https://www.instagram.com/leplanb___/" target="_blank">Instagram</a>
+            <a href="https://wa.me/TUNUMERO" target="_blank">WhatsApp</a>
+        </div>
+    </div>
+    <div class="f-col">
+        <h4>Collection</h4>
+        <ul>
+            <li><a href="#">Polka Dots Set</a></li>
+            <li><a href="#">Polka Dots Shorts</a></li>
+            <li><a href="#">Espresso Set</a></li>
+            <li><a href="#">SS26 All Pieces</a></li>
+        </ul>
+    </div>
+    <div class="f-col">
+        <h4>Info</h4>
+        <ul>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </div>
+    <div class="f-col">
+        <h4>Contact</h4>
+        <ul>
+            <li><a href="https://wa.me/TUNUMERO" target="_blank">WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/leplanb___/" target="_blank">@leplanb___</a></li>
+            <li><a href="#" onclick="openModal(); return false;">Join Waitlist</a></li>
+        </ul>
+    </div>
+</footer>
+<div class="f-bottom">
+    <span>© 2025 Le Plan B — SS26 · Ericeira, Portugal</span>
+    <span>For people off scripts.</span>
+</div>
+
+<script>
+// Nav scroll behavior
+const nav = document.getElementById('nav');
+const logo = document.getElementById('navLogo');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+        nav.classList.add('scrolled');
+        logo.classList.remove('light');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
+
+// Modal
+function openModal() {
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+}
+document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// Waitlist form
+function handleWaitlist(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    const originalText = btn.textContent;
+    btn.textContent = '✓ You\'re on the list';
+    btn.style.background = '#2a8a4a';
+    setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+        closeModal();
+    }, 2500);
+    // TODO: Connect to Klaviyo / Mailchimp / your email service
+    // fetch('YOUR_ENDPOINT', { method: 'POST', body: new FormData(e.target) })
+}
+
+// Smooth anchor scroll offset for fixed nav
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target && this.getAttribute('href') !== '#') {
+            e.preventDefault();
+            window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+        }
+    });
+});
+</script>
+</body>
+</html>
