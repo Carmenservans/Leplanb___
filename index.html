@@ -1689,8 +1689,8 @@
             var ig = document.getElementById('pnIg').value.trim();
             if (!email) return;
             fetch(SCRIPT_URL, {
-                method:'POST', headers:{'Content-Type':'application/json'},
-                body: JSON.stringify({email:email, instagram:ig, product: product + ' · Size ' + size})
+                method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({email:email, instagram:ig, product: product + ' · Size ' + size, source:'restock-notify', timestamp: new Date().toISOString()})
             });
             document.getElementById('prodNotifyForm').style.display = 'none';
             document.getElementById('prodNotifySuccess').style.display = '';
