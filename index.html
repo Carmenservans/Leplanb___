@@ -1488,13 +1488,7 @@
             emailEl.classList.add('error'); emailEl.focus(); return;
         }
         btn.disabled = true; btn.textContent = 'Sending...';
-        try {
-            await fetch(SCRIPT_URL, {
-                method: 'POST', mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: ig || 'popup', email, instagram: ig, timestamp: new Date().toISOString(), source: 'leplanb-popup' })
-            });
-        } catch (_) {}
+        sendToSheet({ name: ig || 'popup', email, instagram: ig, source: 'leplanb-popup' });
         document.getElementById('wpForm').style.display    = 'none';
         document.getElementById('wpSuccess').style.display = 'block';
         localStorage.setItem('lpb_welcomed', '1');
@@ -1555,6 +1549,41 @@
     })();
 
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzen8QnHBog-rjBCJtFDhvRO09mXyfmCMATGnXleAf-9UdjLZU8Yvm11_f7SOpkGvnoBA/exec';
+
+    function sendToSheet(data) {
+        const payload = Object.assign({ timestamp: new Date().toISOString() }, data);
+        // Primary: POST
+        fetch(SCRIPT_URL, {
+            method: 'POST', mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }).catch(() => {});
+        // Fallback: GET via image beacon (bypasses CORS completely)
+        const params = new URLSearchParams(payload).toString();
+        const beacon = new Image();
+        beacon.src = SCRIPT_URL + '?beacon=1&' + params;
+        // Backup: save to localStorage in case both fail
+        try {
+            const saved = JSON.parse(localStorage.getItem('lpb_pending') || '[]');
+            saved.push(payload);
+            localStorage.setItem('lpb_pending', JSON.stringify(saved));
+        } catch(_) {}
+    }
+
+    // Retry any pending submissions from localStorage
+    (function retrySaved() {
+        try {
+            const saved = JSON.parse(localStorage.getItem('lpb_pending') || '[]');
+            if (!saved.length) return;
+            saved.forEach(function(payload) {
+                fetch(SCRIPT_URL, {
+                    method: 'POST', mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                }).catch(() => {});
+            });
+        } catch(_) {}
+    })();
 
     let notifyProduct = '';
     function openModal(productName) {
@@ -1688,10 +1717,7 @@
             var email = document.getElementById('pnEmail').value.trim();
             var ig = document.getElementById('pnIg').value.trim();
             if (!email) return;
-            fetch(SCRIPT_URL, {
-                method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'},
-                body: JSON.stringify({email:email, instagram:ig, product: product + ' · Size ' + size, source:'restock-notify', timestamp: new Date().toISOString()})
-            });
+            sendToSheet({ name: ig || 'popup', email, instagram: ig, product: product + ' · Size ' + size, source: 'restock-notify' });
             document.getElementById('prodNotifyForm').style.display = 'none';
             document.getElementById('prodNotifySuccess').style.display = '';
         };
@@ -1727,11 +1753,7 @@
         if (!valid) return;
         btn.disabled = true; btn.textContent = 'Sending...';
         try {
-            await fetch(SCRIPT_URL, {
-                method: 'POST', mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, instagram: ig, timestamp: new Date().toISOString(), source: notifyProduct ? 'restock-notify' : 'leplanb-optin', product: notifyProduct || '' })
-            });
+            sendToSheet({ name, email, instagram: ig, source: notifyProduct ? 'restock-notify' : 'leplanb-optin', product: notifyProduct || '' });
         } catch (_) {}
         notifyProduct = '';
         document.getElementById('formView').style.display    = 'none';
