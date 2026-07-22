@@ -1681,6 +1681,13 @@
                 (function(pname, psize, pprice){
                     a.addEventListener('click', function() {
                         if(typeof fbq !== 'undefined') {
+                            fbq('track', 'AddToCart', {
+                                content_name: pname,
+                                content_type: 'product',
+                                num_items: 1,
+                                currency: 'EUR',
+                                value: parseFloat((pprice||'0').replace(/[^0-9.]/g,'')) || 0
+                            });
                             fbq('track', 'InitiateCheckout', {
                                 content_name: pname,
                                 content_type: 'product',
@@ -1702,6 +1709,16 @@
                 container.appendChild(btn);
             }
         });
+
+        // Meta ViewContent event
+        if(typeof fbq !== 'undefined') {
+            fbq('track', 'ViewContent', {
+                content_name: name,
+                content_type: 'product',
+                currency: 'EUR',
+                value: parseFloat((price||'0').replace(/[^0-9.]/g,'')) || 0
+            });
+        }
 
         showProdSizes();
         // Reset scroll
