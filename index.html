@@ -1159,7 +1159,7 @@
         </div>
     </div>
     <button class="disc-cta" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop the Collection →</button>
-    <p style="margin-top:16px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2);">⚡ Very limited pieces · Delivery 15–20 July</p>
+    <p style="margin-top:16px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2);">⚡ Very limited pieces · Ships now</p>
 </section>
 
 <!-- ══ UGC ══ -->
@@ -1672,7 +1672,7 @@
         variants.forEach(function(v) {
             if (v.a) {
                 var a = document.createElement('a');
-                a.href = 'https://zniyxu-1a.myshopify.com/cart/' + v.id + ':1';
+                a.href = 'https://zniyxu-1a.myshopify.com/discount/LEPLANB10?redirect=' + encodeURIComponent('/cart/' + v.id + ':1');
                 a.target = '_blank';
                 a.textContent = v.s;
                 a.style.cssText = 'display:inline-flex;align-items:center;justify-content:center;min-width:52px;padding:11px 16px;border:1px solid rgba(42,40,37,0.7);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-family:\'DM Sans\',sans-serif;color:var(--black);text-decoration:none;transition:background 0.2s,color 0.2s;cursor:pointer;';
@@ -1682,13 +1682,6 @@
                     a.addEventListener('click', function() {
                         if(typeof fbq !== 'undefined') {
                             fbq('track', 'AddToCart', {
-                                content_name: pname,
-                                content_type: 'product',
-                                num_items: 1,
-                                currency: 'EUR',
-                                value: parseFloat((pprice||'0').replace(/[^0-9.]/g,'')) || 0
-                            });
-                            fbq('track', 'InitiateCheckout', {
                                 content_name: pname,
                                 content_type: 'product',
                                 num_items: 1,
