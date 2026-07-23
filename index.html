@@ -1806,6 +1806,23 @@
             }, 400);
         }, 3000);
     });
+
+    // ── DEEP LINK: open a product's size selector directly (for ads) ──
+    (function(){
+        var deepLinks = {
+            'buy-activewear': function(){
+                openSizeModal('Activewear Full Set',[{s:'S',id:'54191821881677',a:true},{s:'M',id:'54191821914445',a:true},{s:'L',id:'54191821947213',a:true},{s:'XL',id:'54191821979981',a:true}],['img/p3_fullset_lunares.jpg','img/p4_fullbody.jpg','img/p5_twogirls.jpg'],'€95');
+            },
+            'buy-rosa': function(){
+                openSizeModal('Rosa + Rojo',[{s:'XS',id:'54231110943053',a:false},{s:'S',id:'54231110910285',a:false},{s:'M',id:'54231110877517',a:true},{s:'L',id:'54231110844749',a:false},{s:'XL',id:'54231110811981',a:false}],['img/bk_rosa_static.jpg'],'€75');
+            }
+        };
+        var key = window.location.hash.replace('#', '');
+        if (deepLinks[key]) {
+            localStorage.setItem('lpb_welcomed', '1');
+            setTimeout(deepLinks[key], 300);
+        }
+    })();
 </script>
 <script>
 // Bikini card clickable (image + name area opens product overlay)
