@@ -1802,17 +1802,25 @@
         }
 
         // Populate accordion description
-        var descs = {
-            'Activewear Full Set': '<p>Set completo de tres piezas: top deportivo + braguita + falda pareo. Tejido técnico con protección UV50+, secado rápido y compresión suave.</p><ul><li>80% Poliamida · 20% Elastano</li><li>Protección solar UV50+</li><li>Hecho en Portugal</li></ul>',
-            'Rosa + Rojo': '<p>Bikini de lunares con top bandeau y braguita brasileña. Tejido de alta calidad con forro completo.</p><ul><li>82% Poliamida · 18% Elastano</li><li>Forro interior completo</li><li>Hecho en Ericeira, Portugal</li></ul>',
-            'Azul + Verde': '<p>Bikini de lunares con top de tirantes cruzados y braguita alta. Ajuste favorecedor y estable.</p><ul><li>82% Poliamida · 18% Elastano</li><li>Forro interior completo</li><li>Hecho en Ericeira, Portugal</li></ul>',
-            'Rosa + Café': '<p>Bikini de lunares con top triangular ajustable y braguita clásica. El top lleva foam extraíble.</p><ul><li>82% Poliamida · 18% Elastano</li><li>Foam extraíble</li><li>Hecho en Ericeira, Portugal</li></ul>',
-            'Blanco + Rojo': '<p>Bikini de lunares con top halter y braguita brasileña. Estampado exclusivo de la colección SS26.</p><ul><li>82% Poliamida · 18% Elastano</li><li>Forro interior completo</li><li>Hecho en Ericeira, Portugal</li></ul>',
-            'Café + Beige': '<p>Bikini de lunares en tonos tierra con top bandeau y braguita lateral anudada.</p><ul><li>82% Poliamida · 18% Elastano</li><li>Forro interior completo</li><li>Hecho en Ericeira, Portugal</li></ul>',
-            'Amarillo + Azul': '<p>Bikini de lunares con top de tirantes y braguita alta. Combinación vibrante y exclusiva SS26.</p><ul><li>82% Poliamida · 18% Elastano</li><li>Forro interior completo</li><li>Hecho en Ericeira, Portugal</li></ul>'
+        var prodData = {
+            'Activewear Full Set': {
+                desc: '<p>De pilates a la calle, del gym a la playa. El Full Set Lunares es un conjunto técnico de tres piezas diseñado para moverse sin límites — compresión suave que sostiene, tejido que respira y un estampado que no pasa desapercibido.</p><p style="margin-top:10px;">Top de tirantes + short + falda pareo. Úsalos juntos o por separado: el top va solo, el short se convierte en bañador, la falda pareo se ata como quieras.</p><ul><li>80% Poliamida · 20% Elastano</li><li>Protección solar UV50+</li><li>Secado ultrarrápido · apto para surf y piscina</li><li>Compresión suave de alto rendimiento</li><li>Hecho en Portugal</li></ul>',
+                sizes: '<p>Tallas disponibles: S, M, L, XL. Ajuste ceñido — si estás entre dos tallas, sube una.</p><ul><li>S — busto 82–86 cm · cintura 64–68 cm · cadera 90–94 cm</li><li>M — busto 86–90 cm · cintura 68–72 cm · cadera 94–98 cm</li><li>L — busto 90–94 cm · cintura 72–76 cm · cadera 98–102 cm</li><li>XL — busto 94–98 cm · cintura 76–80 cm · cadera 102–106 cm</li></ul>',
+                care: '<ul><li>Lavar a mano en agua fría — preferiblemente</li><li>Evitar superficies rugosas: la tela de alto rendimiento puede engancharse con toallas de rizo, arena gruesa o velcro</li><li>No usar secadora — secar a la sombra en horizontal</li><li>No planchar</li><li>Aclarar después del mar, piscina o sudoración intensa</li></ul>'
+            }
         };
+        var bikiniDesc = '<p>Bikini de lunares con top y braguita. Tejido de alta calidad con forro completo.</p><ul><li>82% Poliamida · 18% Elastano</li><li>Forro interior completo</li><li>Hecho en Ericeira, Portugal</li></ul>';
+        var bikiniSizes = '<p>Ajuste ceñido y favorecedor. Si estás entre dos tallas, sube una.</p><ul><li>XS — busto 78–82 cm · cintura 60–64 cm</li><li>S — busto 82–86 cm · cintura 64–68 cm</li><li>M — busto 86–90 cm · cintura 68–72 cm</li><li>L — busto 90–94 cm · cintura 72–76 cm</li><li>XL — busto 94–98 cm · cintura 76–80 cm</li></ul>';
+        var bikiniCare = '<ul><li>Lavar a mano en agua fría</li><li>No usar secadora</li><li>No planchar</li><li>Secar a la sombra en horizontal</li><li>Aclarar después del mar o la piscina</li></ul>';
+
+        var pData = prodData[name] || { desc: bikiniDesc, sizes: bikiniSizes, care: bikiniCare };
+
         var descEl = document.getElementById('accDesc');
-        if (descEl) descEl.innerHTML = descs[name] || '<p>Tejido de alta calidad, hecho en Portugal. Forro interior completo.</p><ul><li>82% Poliamida · 18% Elastano</li><li>Hecho en Ericeira, Portugal</li></ul>';
+        if (descEl) descEl.innerHTML = pData.desc;
+
+        var accBodies = document.querySelectorAll('.acc-body');
+        if (accBodies[1]) accBodies[1].innerHTML = pData.sizes;
+        if (accBodies[2]) accBodies[2].innerHTML = pData.care;
 
         // Close all accordion panels
         document.querySelectorAll('.acc-btn').forEach(function(b){ b.classList.remove('open'); });
