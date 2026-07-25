@@ -1331,6 +1331,23 @@
     #prodMobileGallery { display:none; }
     #prodPhotosCol .desk-imgs { display:block; }
 }
+
+/* Trust badges */
+.prod-badges { display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px; }
+.prod-badge { display:flex;align-items:center;gap:6px;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(42,40,37,0.55);font-family:'DM Sans',sans-serif; }
+.prod-badge svg { flex-shrink:0;opacity:0.5; }
+
+/* Accordion */
+.prod-accordion { border-top:1px solid rgba(42,40,37,0.1);margin-top:28px; }
+.acc-item { border-bottom:1px solid rgba(42,40,37,0.1); }
+.acc-btn { display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;padding:14px 0;cursor:pointer;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--black);font-family:'DM Sans',sans-serif;text-align:left; }
+.acc-btn .acc-arrow { font-size:12px;transition:transform 0.25s;color:rgba(42,40,37,0.35); }
+.acc-btn.open .acc-arrow { transform:rotate(180deg); }
+.acc-body { display:none;padding:0 0 16px;font-size:12px;line-height:1.8;color:rgba(42,40,37,0.65);font-family:'DM Sans',sans-serif; }
+.acc-body p { margin:0 0 6px; }
+.acc-body ul { margin:0;padding-left:16px; }
+.acc-body li { margin-bottom:4px; }
+.acc-btn.open + .acc-body { display:block; }
 </style>
 
 <div id="prodOverlay">
@@ -1356,6 +1373,26 @@
             </div>
             <div style="width:32px;height:1px;background:rgba(42,40,37,0.15);margin-bottom:28px;"></div>
 
+            <!-- TRUST BADGES -->
+            <div class="prod-badges">
+                <div class="prod-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    Envío gratis +€110
+                </div>
+                <div class="prod-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01z"/></svg>
+                    Hecho en Ericeira
+                </div>
+                <div class="prod-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                    Edición limitada
+                </div>
+                <div class="prod-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Devoluciones 14 días
+                </div>
+            </div>
+
             <!-- SIZE PICKER -->
             <div id="prodSizeView">
                 <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(42,40,37,0.4);font-family:'DM Sans',sans-serif;margin-bottom:14px;">Select size</p>
@@ -1377,6 +1414,55 @@
                     <button type="submit" style="display:block;width:100%;padding:14px;background:var(--black);color:#fff;border:none;font-size:9px;letter-spacing:3px;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;">Notify me →</button>
                 </form>
                 <button onclick="showProdSizes()" style="display:block;margin:12px auto 0;background:none;border:none;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(42,40,37,0.3);cursor:pointer;font-family:'DM Sans',sans-serif;">← Back to sizes</button>
+            </div>
+
+            <!-- ACCORDION -->
+            <div class="prod-accordion">
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">
+                        Descripción y materiales <span class="acc-arrow">▾</span>
+                    </button>
+                    <div class="acc-body" id="accDesc"></div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">
+                        Talla y ajuste <span class="acc-arrow">▾</span>
+                    </button>
+                    <div class="acc-body">
+                        <p>Nuestros bikinis tienen un ajuste ceñido y favorecedor. Si estás entre dos tallas, sube una.</p>
+                        <ul>
+                            <li>XS — busto 78–82 cm · cintura 60–64 cm</li>
+                            <li>S — busto 82–86 cm · cintura 64–68 cm</li>
+                            <li>M — busto 86–90 cm · cintura 68–72 cm</li>
+                            <li>L — busto 90–94 cm · cintura 72–76 cm</li>
+                            <li>XL — busto 94–98 cm · cintura 76–80 cm</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">
+                        Cuidado <span class="acc-arrow">▾</span>
+                    </button>
+                    <div class="acc-body">
+                        <ul>
+                            <li>Lavar a mano en agua fría</li>
+                            <li>No usar secadora</li>
+                            <li>No planchar</li>
+                            <li>Secar a la sombra en horizontal</li>
+                            <li>Aclarar después del mar o la piscina</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="acc-item">
+                    <button class="acc-btn" onclick="toggleAcc(this)">
+                        Envío y devoluciones <span class="acc-arrow">▾</span>
+                    </button>
+                    <div class="acc-body">
+                        <p><strong>Envío gratis</strong> en pedidos +€110 · Resto desde €4.95</p>
+                        <p>Entrega en 3–5 días laborables (España). Europa 5–7 días.</p>
+                        <p>Devoluciones gratuitas en 14 días desde la recepción. El artículo debe estar sin usar y con etiquetas.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1715,6 +1801,23 @@
             });
         }
 
+        // Populate accordion description
+        var descs = {
+            'Activewear Full Set': '<p>Set completo de tres piezas: top deportivo + braguita + falda pareo. Tejido técnico con protección UV50+, secado rápido y compresión suave.</p><ul><li>80% Poliamida · 20% Elastano</li><li>Protección solar UV50+</li><li>Hecho en Portugal</li></ul>',
+            'Rosa + Rojo': '<p>Bikini de lunares con top bandeau y braguita brasileña. Tejido de alta calidad con forro completo.</p><ul><li>82% Poliamida · 18% Elastano</li><li>Forro interior completo</li><li>Hecho en Ericeira, Portugal</li></ul>',
+            'Azul + Verde': '<p>Bikini de lunares con top de tirantes cruzados y braguita alta. Ajuste favorecedor y estable.</p><ul><li>82% Poliamida · 18% Elastano</li><li>Forro interior completo</li><li>Hecho en Ericeira, Portugal</li></ul>',
+            'Rosa + Café': '<p>Bikini de lunares con top triangular ajustable y braguita clásica. El top lleva foam extraíble.</p><ul><li>82% Poliamida · 18% Elastano</li><li>Foam extraíble</li><li>Hecho en Ericeira, Portugal</li></ul>',
+            'Blanco + Rojo': '<p>Bikini de lunares con top halter y braguita brasileña. Estampado exclusivo de la colección SS26.</p><ul><li>82% Poliamida · 18% Elastano</li><li>Forro interior completo</li><li>Hecho en Ericeira, Portugal</li></ul>',
+            'Café + Beige': '<p>Bikini de lunares en tonos tierra con top bandeau y braguita lateral anudada.</p><ul><li>82% Poliamida · 18% Elastano</li><li>Forro interior completo</li><li>Hecho en Ericeira, Portugal</li></ul>',
+            'Amarillo + Azul': '<p>Bikini de lunares con top de tirantes y braguita alta. Combinación vibrante y exclusiva SS26.</p><ul><li>82% Poliamida · 18% Elastano</li><li>Forro interior completo</li><li>Hecho en Ericeira, Portugal</li></ul>'
+        };
+        var descEl = document.getElementById('accDesc');
+        if (descEl) descEl.innerHTML = descs[name] || '<p>Tejido de alta calidad, hecho en Portugal. Forro interior completo.</p><ul><li>82% Poliamida · 18% Elastano</li><li>Hecho en Ericeira, Portugal</li></ul>';
+
+        // Close all accordion panels
+        document.querySelectorAll('.acc-btn').forEach(function(b){ b.classList.remove('open'); });
+        document.querySelectorAll('.acc-body').forEach(function(b){ b.style.display='none'; });
+
         showProdSizes();
         // Reset scroll
         document.getElementById('prodPhotosCol').scrollTop = 0;
@@ -1760,6 +1863,16 @@
             document.getElementById('prodNotifyForm').style.display = 'none';
             document.getElementById('prodNotifySuccess').style.display = '';
         };
+    }
+
+    function toggleAcc(btn) {
+        var isOpen = btn.classList.contains('open');
+        document.querySelectorAll('.acc-btn').forEach(function(b){ b.classList.remove('open'); });
+        document.querySelectorAll('.acc-body').forEach(function(b){ b.style.display='none'; });
+        if (!isOpen) {
+            btn.classList.add('open');
+            btn.nextElementSibling.style.display = 'block';
+        }
     }
 
     function closeSizeModal() {
