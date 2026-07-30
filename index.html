@@ -1692,7 +1692,7 @@
         notifyProduct = productName || '';
         document.getElementById('overlay').classList.add('open');
         document.body.style.overflow = 'hidden';
-        setTimeout(() => document.getElementById('nameInput').focus(), 300);
+        setTimeout(() => document.getElementById('emailInput').focus(), 300);
     }
     function closeModal() {
         document.getElementById('overlay').classList.remove('open');
@@ -1896,24 +1896,20 @@
 
     document.getElementById('theForm').addEventListener('submit', async function(e) {
         e.preventDefault();
-        const nameEl  = document.getElementById('nameInput');
         const emailEl = document.getElementById('emailInput');
         const igEl    = document.getElementById('igInput');
         const btn     = document.getElementById('submitBtn');
-        nameEl.classList.remove('error');
         emailEl.classList.remove('error');
-        const name  = nameEl.value.trim();
         const email = emailEl.value.trim();
         const ig    = igEl.value.trim();
         let valid = true;
-        if (!name)  { nameEl.classList.add('error'); nameEl.focus(); valid = false; }
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            emailEl.classList.add('error'); if (valid) emailEl.focus(); valid = false;
+            emailEl.classList.add('error'); emailEl.focus(); valid = false;
         }
         if (!valid) return;
         btn.disabled = true; btn.textContent = 'Sending...';
         try {
-            sendToSheet({ name, email, instagram: ig, source: notifyProduct ? 'restock-notify' : 'leplanb-optin', product: notifyProduct || '' });
+            sendToSheet({ name: ig || email, email, instagram: ig, source: notifyProduct ? 'restock-notify' : 'leplanb-optin', product: notifyProduct || '' });
         } catch (_) {}
         notifyProduct = '';
         document.getElementById('formView').style.display    = 'none';
