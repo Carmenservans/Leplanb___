@@ -981,8 +981,8 @@
             <div id="bfDots" style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;"></div>
         </div>
         <div style="text-align:center;">
-            <p style="font-size:13px;color:rgba(42,40,37,0.5);font-family:'DM Sans',sans-serif;margin-bottom:28px;line-height:1.8;">100% Cotton · Very limited pieces.</p>
-            <button onclick="openBfPopup()" style="display:inline-block;padding:18px 56px;background:#2a2825;color:#fff;border:none;font-size:9px;letter-spacing:4px;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;">I want one →</button>
+            <p style="font-size:13px;color:rgba(42,40,37,0.5);font-family:'DM Sans',sans-serif;margin-bottom:20px;line-height:1.8;">100% Cotton · Very limited pieces.</p>
+            <button onclick="openSizeModal('My Boyfriend is not in town',[{s:'S',id:'54521591169357',a:true},{s:'M',id:'54521591136589',a:true}],['img/bf_1.jpg','img/bf_2.jpg','img/bf_3.jpg','img/bf_4.jpg','img/bf_5.jpg','img/bf_6.jpg','img/bf_7.jpg'],'€39.90')" style="display:inline-block;padding:18px 56px;background:#2a2825;color:#fff;border:none;font-size:9px;letter-spacing:4px;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;">Shop Now →</button>
         </div>
     </div>
 </section>
@@ -1865,6 +1865,11 @@
 
         // Populate accordion description
         var prodData = {
+            'My Boyfriend is not in town': {
+                desc: '<p>The one that says everything without saying anything. Ribbed cotton, fitted cut, made to be worn with nothing underneath or everything on top.</p><ul><li>100% Cotton</li><li>Ribbed fitted cut</li><li>Limited Edition · LeplanB SS26</li></ul>',
+                sizes: '<p>Fitted cut. If you are between sizes, size up.</p><ul><li>S — bust 82–86 cm · waist 64–68 cm</li><li>M — bust 86–90 cm · waist 68–72 cm</li></ul>',
+                care: '<ul><li>Machine wash cold, gentle cycle</li><li>Do not tumble dry</li><li>Iron on low heat if needed</li><li>Do not bleach</li></ul>'
+            },
             'Activewear Full Set': {
                 desc: '<p>Technical set built for movement — pilates, gym, surf, or wherever the day takes you. Supportive without being restrictive, quick-dry, and ready for water.</p><ul><li>80% Polyamide · 20% Elastane</li><li>UV50+ sun protection</li><li>Quick-dry · surf and swim ready</li><li>Soft high-performance compression</li><li>Made in Portugal</li></ul>',
                 sizes: '<p>Tallas disponibles: S, M, L, XL. Ajuste ceñido — si estás entre dos tallas, sube una.</p><ul><li>S — busto 82–86 cm · cintura 64–68 cm · cadera 90–94 cm</li><li>M — busto 86–90 cm · cintura 68–72 cm · cadera 94–98 cm</li><li>L — busto 90–94 cm · cintura 72–76 cm · cadera 98–102 cm</li><li>XL — busto 94–98 cm · cintura 76–80 cm · cadera 102–106 cm</li></ul>',
