@@ -1437,21 +1437,21 @@
 
             <!-- TRUST BADGES -->
             <div class="prod-badges">
-                <div class="prod-badge">
+                <div class="prod-badge" id="badgeShipping">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    Envío gratis +€110
+                    Free shipping +€110
                 </div>
                 <div class="prod-badge">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01z"/></svg>
-                    Hecho en Ericeira
+                    Made in Ericeira
                 </div>
                 <div class="prod-badge">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-                    Edición limitada
+                    Limited edition
                 </div>
                 <div class="prod-badge">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                    Devoluciones 14 días
+                    14-day returns
                 </div>
             </div>
 
@@ -1482,47 +1482,47 @@
             <div class="prod-accordion">
                 <div class="acc-item">
                     <button class="acc-btn" onclick="toggleAcc(this)">
-                        Descripción y materiales <span class="acc-arrow">▾</span>
+                        Description &amp; materials <span class="acc-arrow">▾</span>
                     </button>
                     <div class="acc-body" id="accDesc"></div>
                 </div>
                 <div class="acc-item">
                     <button class="acc-btn" onclick="toggleAcc(this)">
-                        Talla y ajuste <span class="acc-arrow">▾</span>
+                        Size &amp; fit <span class="acc-arrow">▾</span>
                     </button>
-                    <div class="acc-body">
-                        <p>Nuestros bikinis tienen un ajuste ceñido y favorecedor. Si estás entre dos tallas, sube una.</p>
+                    <div class="acc-body" id="accSizes">
+                        <p>Our bikinis have a fitted, flattering cut. If you're between sizes, size up.</p>
                         <ul>
-                            <li>XS — busto 78–82 cm · cintura 60–64 cm</li>
-                            <li>S — busto 82–86 cm · cintura 64–68 cm</li>
-                            <li>M — busto 86–90 cm · cintura 68–72 cm</li>
-                            <li>L — busto 90–94 cm · cintura 72–76 cm</li>
-                            <li>XL — busto 94–98 cm · cintura 76–80 cm</li>
+                            <li>XS — bust 78–82 cm · waist 60–64 cm</li>
+                            <li>S — bust 82–86 cm · waist 64–68 cm</li>
+                            <li>M — bust 86–90 cm · waist 68–72 cm</li>
+                            <li>L — bust 90–94 cm · waist 72–76 cm</li>
+                            <li>XL — bust 94–98 cm · waist 76–80 cm</li>
                         </ul>
                     </div>
                 </div>
                 <div class="acc-item">
                     <button class="acc-btn" onclick="toggleAcc(this)">
-                        Cuidado <span class="acc-arrow">▾</span>
+                        Care <span class="acc-arrow">▾</span>
                     </button>
-                    <div class="acc-body">
+                    <div class="acc-body" id="accCare">
                         <ul>
-                            <li>Lavar a mano en agua fría</li>
-                            <li>No usar secadora</li>
-                            <li>No planchar</li>
-                            <li>Secar a la sombra en horizontal</li>
-                            <li>Aclarar después del mar o la piscina</li>
+                            <li>Hand wash in cold water</li>
+                            <li>Do not tumble dry</li>
+                            <li>Do not iron</li>
+                            <li>Dry flat in the shade</li>
+                            <li>Rinse after sea or pool</li>
                         </ul>
                     </div>
                 </div>
                 <div class="acc-item">
                     <button class="acc-btn" onclick="toggleAcc(this)">
-                        Envío y devoluciones <span class="acc-arrow">▾</span>
+                        Shipping &amp; returns <span class="acc-arrow">▾</span>
                     </button>
                     <div class="acc-body">
-                        <p><strong>Envío gratis</strong> en pedidos +€110 · Resto desde €4.95</p>
-                        <p>Entrega en 3–5 días laborables (España). Europa 5–7 días.</p>
-                        <p>Devoluciones gratuitas en 14 días desde la recepción. El artículo debe estar sin usar y con etiquetas.</p>
+                        <p><strong>Free shipping</strong> on orders +€110 · Otherwise from €4.95</p>
+                        <p>Delivery in 3–5 business days (Spain). Europe 5–7 days.</p>
+                        <p>Free returns within 14 days of receipt. Item must be unworn and with tags.</p>
                     </div>
                 </div>
             </div>
@@ -1885,9 +1885,13 @@
         var descEl = document.getElementById('accDesc');
         if (descEl) descEl.innerHTML = pData.desc;
 
-        var accBodies = document.querySelectorAll('.acc-body');
-        if (accBodies[1]) accBodies[1].innerHTML = pData.sizes;
-        if (accBodies[2]) accBodies[2].innerHTML = pData.care;
+        var sizesEl = document.getElementById('accSizes');
+        if (sizesEl) sizesEl.innerHTML = pData.sizes;
+        var careEl = document.getElementById('accCare');
+        if (careEl) careEl.innerHTML = pData.care;
+
+        var badgeShipping = document.getElementById('badgeShipping');
+        if (badgeShipping) badgeShipping.style.display = (name === 'My Boyfriend is not in town') ? 'none' : '';
 
         // Close all accordion panels
         document.querySelectorAll('.acc-btn').forEach(function(b){ b.classList.remove('open'); });
