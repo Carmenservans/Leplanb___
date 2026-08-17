@@ -1443,7 +1443,15 @@
                 </div>
                 <div class="prod-badge">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01z"/></svg>
-                    Made in Ericeira
+                    Made in Portugal
+                </div>
+                <div class="prod-badge" id="badgeHandmade">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 11V6a2 2 0 00-2-2v0a2 2 0 00-2 2v0M14 10V4a2 2 0 00-2-2v0a2 2 0 00-2 2v2M10 10.5V6a2 2 0 00-2-2v0a2 2 0 00-2 2v8l4 4h4.5a1.5 1.5 0 001.5-1.5v0c0-.28-.08-.55-.22-.78L17 16"/></svg>
+                    Handmade
+                </div>
+                <div class="prod-badge" id="badgeRecycled">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 19H4.815a1.83 1.83 0 01-1.57-2.163l2.9-12.057A2 2 0 018.08 3h7.84a2 2 0 011.95 1.78l2.9 12.057A1.83 1.83 0 0118.815 19H17M7 19l5-5 5 5M7 19l5 3 5-3"/></svg>
+                    Recycled fabrics
                 </div>
                 <div class="prod-badge">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
@@ -1890,8 +1898,13 @@
         var careEl = document.getElementById('accCare');
         if (careEl) careEl.innerHTML = pData.care;
 
+        var isTshirt = (name === 'My Boyfriend is not in town');
         var badgeShipping = document.getElementById('badgeShipping');
-        if (badgeShipping) badgeShipping.style.display = (name === 'My Boyfriend is not in town') ? 'none' : '';
+        if (badgeShipping) badgeShipping.style.display = isTshirt ? 'none' : '';
+        var badgeHandmade = document.getElementById('badgeHandmade');
+        if (badgeHandmade) badgeHandmade.style.display = isTshirt ? 'none' : '';
+        var badgeRecycled = document.getElementById('badgeRecycled');
+        if (badgeRecycled) badgeRecycled.style.display = isTshirt ? 'none' : '';
 
         // Close all accordion panels
         document.querySelectorAll('.acc-btn').forEach(function(b){ b.classList.remove('open'); });
