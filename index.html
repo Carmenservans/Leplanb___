@@ -217,15 +217,22 @@
         flex-wrap: wrap; gap: 12px;
     }
     .section-title {
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: clamp(40px, 5.5vw, 68px);
-        color: var(--black); line-height: 0.88;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 300;
+        font-size: clamp(28px, 4vw, 52px);
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: var(--black); line-height: 1.1;
     }
     .section-title em {
-        font-family: 'Cormorant Garamond', serif;
-        font-style: italic; font-weight: 300;
-        font-size: 0.72em; color: rgba(17,17,17,0.35);
+        font-family: 'DM Sans', sans-serif;
+        font-style: normal;
+        font-weight: 200;
+        font-size: 0.62em;
+        letter-spacing: 4px;
+        color: rgba(17,17,17,0.35);
         display: block;
+        margin-top: 4px;
     }
     .section-title.light { color: var(--black); }
     .section-title.light em { color: rgba(17,17,17,0.3); }
@@ -1018,7 +1025,7 @@
 
 <section id="collection" style="background:var(--white);padding:clamp(60px,8vw,100px) clamp(20px,4vw,56px) 0;">
     <p style="font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(42,40,37,0.28);margin-bottom:16px;text-align:center;">SS26 · Ericeira, Portugal</p>
-    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(32px,5vw,60px);color:var(--black);margin-bottom:clamp(28px,4vw,48px);text-align:center;letter-spacing:1px;">The Collection</div>
+    <div style="font-family:'DM Sans',sans-serif;font-weight:200;font-size:clamp(22px,3.5vw,42px);color:var(--black);margin-bottom:clamp(28px,4vw,48px);text-align:center;letter-spacing:8px;text-transform:uppercase;">The Collection</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:1000px;margin:0 auto;">
         <a class="col-card" href="#preorder" onclick="event.preventDefault();document.getElementById('preorder').scrollIntoView({behavior:'smooth'})">
             <img src="img/p3_fullset_lunares.jpg" alt="Activewear">
@@ -1056,7 +1063,7 @@
         <div style="position:sticky;top:calc(var(--nav-h) + 24px);">
             <p style="font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(42,40,37,0.4);margin-bottom:12px;">Activewear · SS26</p>
             <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);letter-spacing:2px;color:var(--black);line-height:1;margin-bottom:6px;">FULL SET</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(20px,2.5vw,28px);color:var(--rust);margin-bottom:24px;">Lunares</div>
+            <div style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:clamp(11px,1.2vw,14px);letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:24px;">Polka Dots Collection</div>
             <div style="font-size:28px;font-weight:300;color:var(--black);margin-bottom:28px;letter-spacing:1px;">€95</div>
             <p style="font-size:12px;line-height:1.7;color:rgba(42,40,37,0.6);margin-bottom:16px;">Top + Short · High-compression · Surf &amp; swim ready · Quick-dry · Edición limitada · Ericeira</p>
             <p style="display:inline-block;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;color:#fff;background:var(--black);padding:6px 14px;margin-bottom:20px;">BACK IN STOCK</p>
