@@ -111,7 +111,11 @@
     .nav-ig:hover { color: #fff; }
     .nav.solid .nav-ig { color: rgba(17,17,17,0.4); }
     .nav.solid .nav-ig:hover { color: var(--black); }
-    @media (max-width: 640px) { .nav-links { display: none; } }
+    @media (max-width: 640px) {
+        .nav-links { display: none; }
+        .nav-cta { display: none; }
+        .nav { height: 52px; }
+    }
 
     /* ── HERO ── */
     .hero {
@@ -900,13 +904,15 @@
 <body>
 
 <!-- ══ RESTOCK BAR ══ -->
-<div style="background:var(--black);color:#fff;text-align:center;padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;">
-    <strong style="color:#C8B89A;">BACK IN STOCK</strong> &nbsp;·&nbsp; Activewear Lunares — S, M, L, XL &nbsp;·&nbsp; <a href="#preorder" style="color:#fff;text-decoration:underline;letter-spacing:2px;">Shop Now →</a>
+<div style="background:var(--black);color:#fff;text-align:center;padding:10px 16px;font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;">
+    <span class="rbar-full"><strong style="color:#C8B89A;">BACK IN STOCK</strong> &nbsp;·&nbsp; Activewear Lunares — S, M, L, XL &nbsp;·&nbsp; <a href="#preorder" style="color:#fff;text-decoration:underline;letter-spacing:2px;">Shop Now →</a></span>
+    <span class="rbar-mobile"><strong style="color:#C8B89A;">Back in Stock</strong> &nbsp;·&nbsp; <a href="#preorder" style="color:#fff;text-decoration:underline;">Shop Now →</a></span>
 </div>
 
 <!-- ══ ANNOUNCEMENT BAR ══ -->
 <div class="announcement-bar">
-    10% off your first order — code <strong>LEPLANB10</strong> &nbsp;·&nbsp; Bikinis available now &nbsp;·&nbsp; Activewear back in stock
+    <span class="rbar-full">10% off your first order — code <strong>LEPLANB10</strong> &nbsp;·&nbsp; Bikinis available now &nbsp;·&nbsp; Activewear back in stock</span>
+    <span class="rbar-mobile">Code <strong>LEPLANB10</strong> · 10% off</span>
 </div>
 
 <!-- ══ NAV ══ -->
@@ -1392,6 +1398,74 @@
 @media (min-width:769px) {
     #prodMobileGallery { display:none; }
     #prodPhotosCol .desk-imgs { display:block; }
+}
+
+/* Restock / announcement bar responsive */
+.rbar-mobile { display: none; }
+@media (max-width: 640px) {
+    .rbar-full { display: none; }
+    .rbar-mobile { display: inline; }
+}
+
+/* ══ MOBILE RESPONSIVE ══ */
+@media (max-width: 640px) {
+
+    /* Collection grid: 2 col → 1 col */
+    #collection > div > div[style] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Activewear section: side by side → stacked */
+    #preorder > div[style] {
+        grid-template-columns: 1fr !important;
+    }
+    #preorder > div > div:last-child {
+        position: static !important;
+    }
+    /* Activewear photo grid: full width on top */
+    #preorder > div > div:first-child {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    /* Bikinis: 3 col → 2 col */
+    .cards-grid[style] {
+        grid-template-columns: repeat(2,1fr) !important;
+        gap: 8px !important;
+    }
+
+    /* BF section: title + price stack */
+    #bf-section > div > div[style*="justify-content:space-between"] {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    #bf-section > div > div[style*="text-align:right"] {
+        text-align: left !important;
+    }
+
+    /* BF slider: reduce max height */
+    #bfSlider img {
+        max-height: 65vh !important;
+    }
+
+    /* Shop Now button: full width on mobile */
+    #bf-section button[onclick] {
+        width: 100% !important;
+        padding: 18px 24px !important;
+    }
+
+    /* Bikini card body: tighter */
+    .pcard-body { padding: 12px 10px; }
+    .pcard-name { font-size: 13px; }
+    .bk-buy-btn { font-size: 8px; padding: 10px 12px; }
+
+    /* Section header wraps */
+    .section-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+    /* Discount section */
+    .sec-discount > div[style] {
+        flex-direction: column !important;
+        text-align: center;
+    }
 }
 
 /* Trust badges */
