@@ -41,34 +41,40 @@
     /* ── ANNOUNCEMENT BAR ── */
     .announcement-bar {
         background: var(--sand);
-        color: rgba(42,40,37,0.5);
+        color: rgba(42,40,37,0.55);
         text-align: center;
-        padding: 10px 16px;
+        padding: 9px 16px;
         font-size: 10px;
-        letter-spacing: 2.5px;
+        letter-spacing: 2px;
         text-transform: uppercase;
         font-weight: 400;
-        position: relative;
-        z-index: 101;
+        position: sticky;
+        top: 0;
+        z-index: 200;
         border-bottom: 1px solid rgba(42,40,37,0.08);
     }
     .announcement-bar strong { color: var(--black); font-weight: 600; }
 
     /* ── NAV ── */
     .nav {
-        position: fixed;
+        position: sticky;
         top: 0; left: 0; right: 0;
         height: var(--nav-h);
-        z-index: 100;
+        z-index: 199;
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 0 clamp(16px, 4vw, 52px);
-        background: transparent;
+        background: rgba(20,18,16,0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         transition: background 0.35s;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     .nav.solid {
-        background: var(--white);
+        background: rgba(255,255,255,0.96);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         border-bottom: 1px solid rgba(17,17,17,0.08);
     }
     .nav-brand {
@@ -903,15 +909,9 @@
 </head>
 <body>
 
-<!-- ══ RESTOCK BAR ══ -->
-<div style="background:var(--black);color:#fff;text-align:center;padding:10px 16px;font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;">
-    <span class="rbar-full"><strong style="color:#C8B89A;">BACK IN STOCK</strong> &nbsp;·&nbsp; Activewear Lunares — S, M, L, XL &nbsp;·&nbsp; <a href="#preorder" style="color:#fff;text-decoration:underline;letter-spacing:2px;">Shop Now →</a></span>
-    <span class="rbar-mobile"><strong style="color:#C8B89A;">Back in Stock</strong> &nbsp;·&nbsp; <a href="#preorder" style="color:#fff;text-decoration:underline;">Shop Now →</a></span>
-</div>
-
 <!-- ══ ANNOUNCEMENT BAR ══ -->
 <div class="announcement-bar">
-    <span class="rbar-full">10% off your first order — code <strong>LEPLANB10</strong> &nbsp;·&nbsp; Bikinis available now &nbsp;·&nbsp; Activewear back in stock</span>
+    <span class="rbar-full">Free shipping to Spain & Portugal on orders +€110 &nbsp;·&nbsp; Code <strong>LEPLANB10</strong> for 10% off your first order</span>
     <span class="rbar-mobile">Code <strong>LEPLANB10</strong> · 10% off</span>
 </div>
 
